@@ -1,3 +1,5 @@
+package People;
+
 public class Referee {
     //private Map<Competitor, List<int>> scoreboard;
 

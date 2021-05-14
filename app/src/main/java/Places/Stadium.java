@@ -1,3 +1,8 @@
+package Places;
+
+import Places.Track;
+import Places.Sandpit;
+import Places.Cloakroom;
 import java.util.List;
 
 public class Stadium {

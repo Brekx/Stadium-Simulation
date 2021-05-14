@@ -1,3 +1,5 @@
+package People;
+
 public abstract class Competitor {
     public String name;
 

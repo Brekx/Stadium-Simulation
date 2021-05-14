@@ -1,5 +1,11 @@
+package Utilities;
+
 import java.util.List;
 import java.util.Random;
+
+import Utilities.Generator;
+import People.Competitor;
+import Places.Stadium;
 
 public class Simulation {
     private int number_of_iterations;
@@ -15,7 +21,7 @@ public class Simulation {
 
     }
 
-    public void main(String[] strings){
+    public static void main(String[] strings){
 
     }
 }

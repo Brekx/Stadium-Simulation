@@ -3,6 +3,8 @@
  */
 package Stadium.Simulation;
 
+//import app.src.main.java.Stadium.Simulation.Cloakroom;
+
 public class App {
     public String getGreeting() {
         return "Hello World!";
@@ -10,5 +12,7 @@ public class App {
 
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
+        // Cloakroom a;
+        // a.joinQueue(null);
     }
 }
