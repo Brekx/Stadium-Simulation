@@ -10,6 +10,10 @@ public abstract class Sector {
     Referee referee;
 
     public void joinQueue(Competitor competitor){
-        System.out.println("HEllo");
+        queue.add(competitor);
+    }
+
+    public List<Competitor> getQueue(){
+        return queue;
     }
 }

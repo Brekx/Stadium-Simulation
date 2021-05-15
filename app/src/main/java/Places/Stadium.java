@@ -8,19 +8,25 @@ import java.util.List;
 public class Stadium {
     private List <Sector> sectorList;
     
-    Stadium(int tracks, int sandpits, int cloakrooms){
+    public Stadium(int tracks, int sandpits, int cloakrooms){
 
     }
 
-    Track getTrack(){
+    public performCompetition(){
+        for(Sector sector: sectorList){
+            sector.referee.judge();
+        }
+    }
+
+    public Track getTrack(){
         return null;
     }
 
-    Sandpit getSandpit(){
+    public Sandpit getSandpit(){
         return null;
     }
 
-    Cloakroom getCloakroom(){
+    public Cloakroom getCloakroom(){
         return null;
     }
 }
