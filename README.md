@@ -3,5 +3,6 @@ Symulację wywołuje się konstuując symulację oraz wywołując na niej metod�
 ### TODO
 - [ ] implementacja klas
 - [ ] naprawa hermetyzacji
+- [ ] wyjątki
 - [ ] testy
 - [ ] aktualizacja diagramów

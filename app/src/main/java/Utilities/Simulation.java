@@ -3,21 +3,20 @@ package Utilities;
 import java.util.List;
 import java.util.Random;
 
-import Utilities.Generator;
 import People.Competitor;
 import Places.Stadium;
 
 public class Simulation {
     private int number_of_iterations;
     private Random random;
-    private app.src.main.java.Places.Stadium stadium;
+    private Stadium stadium;
     private List <Competitor> competitorsList;
 
     Simulation(Generator generator, Random random, int number_of_iterations){
         this.competitorsList = generator.generateCompetitors();
         this.random = random;
         this.number_of_iterations = number_of_iterations;
-        this.stadium = new Stadium(1, 1, 1);
+        this.stadium = new Stadium(1, 1, 1, random);
     }
 
     public void runSimulation(){

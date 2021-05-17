@@ -1,7 +1,5 @@
 package People;
 
-import People.Competitor;
-
 public class Jumper extends Competitor {
 
     Jumper(String name, int strength, int speed, int prep){
@@ -14,6 +12,6 @@ public class Jumper extends Competitor {
     }
 
     public int jump(int param1){
-        return null;
+        return 0;
     }
 }
