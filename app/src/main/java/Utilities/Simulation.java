@@ -34,7 +34,7 @@ public class Simulation {
     }
 
     public static void main(String[] strings){
-        Generator generator = new Generator();
+        Generator generator = new Generator(5);
         Random random = new Random();
         Simulation simulation = new Simulation(generator, random, 5);
         simulation.runSimulation();

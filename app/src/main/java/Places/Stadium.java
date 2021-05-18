@@ -1,5 +1,6 @@
 package Places;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -9,6 +10,7 @@ public class Stadium {
     private int last_index_track, last_index_sandpit, last_index_cloakroom;
     
     public Stadium(int tracks, int sandpits, int cloakrooms, Random random){
+        sectorList = new ArrayList<Sector>();
         for(int i=0; i<tracks; i++){
             Track to_add = new Track(random);
             sectorList.add(to_add);
