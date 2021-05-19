@@ -2,7 +2,7 @@ package People;
 
 import java.util.Random;
 
-import app.src.main.java.Places.Stadium;
+import Places.Stadium;
 
 public abstract class Competitor {
     public String name;

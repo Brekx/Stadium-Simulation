@@ -1,13 +1,19 @@
 package Places;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import People.Competitor;
-import People.Referee;
 
 public abstract class Sector {
     private List<Competitor> queue;
-    Referee referee;
+    protected Referee referee;
+
+    Sector(Random random, int type){
+        queue = new ArrayList<Competitor>();
+        referee = new Referee(this, random, type);
+    }
 
     public void joinQueue(Competitor competitor){
         queue.add(competitor);

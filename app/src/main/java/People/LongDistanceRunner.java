@@ -1,14 +1,17 @@
 package People;
 
-import People.Competitor;
-
 public class LongDistanceRunner extends Competitor {
 
     LongDistanceRunner(String name, int strength, int speed, int prep){
         super(name, strength, speed, prep);
     }
 
-    public void run(int param1){
-        
+    @Override
+    public int perform(int param1) {
+        return run(param1);
+    }
+
+    public int run(int param1){
+        return 0;
     }
 }
