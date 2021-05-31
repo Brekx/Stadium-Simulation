@@ -38,13 +38,13 @@ public abstract class Competitor {
 
     public void move(Stadium stadium, Random random){
         switch(random.nextInt(3)){
-            case 1:
+            case 0:
                 stadium.getTrack().joinQueue(this);
                 break;
-            case 2:
+            case 1:
                 stadium.getCloakroom().joinQueue(this);
                 break;
-            case 3:
+            case 2:
                 stadium.getSandpit().joinQueue(this);
                 break;
             default:
