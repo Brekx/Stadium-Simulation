@@ -43,7 +43,7 @@ public class Referee {
         }
     }
 
-    public Map <String, Integer> getResults(){ 
+    public Map<String, Integer> getResults(){ 
         
         Set<Entry<String,List<Integer>>> entrySetScoreboard = scoreboard.entrySet();
         for(Entry<String,List<Integer>> entry: entrySetScoreboard){
