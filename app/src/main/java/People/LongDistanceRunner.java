@@ -2,7 +2,7 @@ package People;
 
 public class LongDistanceRunner extends Competitor {
 
-    LongDistanceRunner(String name, int strength, int speed, int prep){
+    public LongDistanceRunner(String name, int strength, int speed, int prep){
         super(name, strength, speed, prep);
     }
 

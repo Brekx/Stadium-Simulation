@@ -2,7 +2,7 @@ package People;
 
 public class Sprinter extends Competitor {
 
-    Sprinter(String name, int strength, int speed, int prep){
+    public Sprinter(String name, int strength, int speed, int prep){
         super(name, strength, speed, prep);
     }
 
