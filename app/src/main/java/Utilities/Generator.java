@@ -23,49 +23,50 @@ public class Generator {
         this.competitors_number = competitors_number;
     }
 
-    List <Competitor> generateCompetitors(){
-        Random random = new Random();
+    List <Competitor> generateCompetitors(Random random){
         competitorsList = new ArrayList<Competitor>() ;
 
         File file = new File("names.txt");
-        Scanner scanner1 = new Scanner(file);
-        
-        int random_name_number;        
+        Scanner scanner1;
+
+        String name;
+        int strength, speed, prep;
+
+        Competitor competitor;
+
+        try{
+             scanner1 = new Scanner(file);
+        }
+        catch(Exception exception){
+            return null;
+        }
+
+        List <String> names = new ArrayList<>();
+        while(scanner1.hasNext()){
+            names.add(scanner1.nextLine());
+        }
+        scanner1.close();
+
         //tu mieli byc jumper1,LongDistanceRunner1,sprinter1,line ale wtedy wyrzuca blad inicjalizacji 
         
         for(int i=0;i<competitors_number;i++){
+            name = names.get(random.nextInt(names.size()));
+            strength = random.nextInt(101);
+            speed = random.nextInt(101);
+            prep = random.nextInt(101);
 
-            random_name_number = random.nextInt(18238);
-            for(int j=0;j<random_name_number;j++){
-                line = scanner1.nextLine();
-            }
-
-            int random_competitor_type=random.nextInt(3); 
-            switch(random_competitor_type){
+            switch(random.nextInt(3)){
                 case 0: 
-                jumper1.name = line;
-                jumper1.strength = random.nextInt(101);
-                jumper1.speed = random.nextInt(101);
-                jumper1.prep = random.nextInt(101);
-                competitorsList.add(jumper1);
+                    competitor = new Jumper(name, strength, speed, prep);
                 break;
-
                 case 1:
-                sprinter1.name = line;
-                sprinter1.strength = random.nextInt(101);
-                sprinter1.speed = random.nextInt(101);
-                sprinter1.prep = random.nextInt(101);
-                competitorsList.add(sprinter1);
+                    competitor = new LongDistanceRunner(name, strength, speed, prep);
                 break;
-
-                case 2:
-                longDistanceRunner1.name = line;
-                longDistanceRunner1.strength = random.nextInt(101);
-                longDistanceRunner1.speed = random.nextInt(101);
-                longDistanceRunner1.prep = random.nextInt(101);
-                competitorsList.add(longDistanceRunner1);               
+                default:
+                    competitor = new Sprinter(name, strength, speed, prep);
                 break;
             }
+            competitorsList.add(competitor);
         }
     return competitorsList;
     } 
