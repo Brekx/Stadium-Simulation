@@ -17,7 +17,7 @@ public class Referee {
     private Sector judgingSector;
     private Random random;
     private Map <String, List<Integer>> scoreboard; 
-    private Map <String,Integer> MapWinnersInSector;
+    private Map <String,Integer> bestScoresInSector;
 
     Referee(Sector judgingSector, Random random, int type){
         scoreboard = new HashMap<String, List<Integer>>();
@@ -47,8 +47,8 @@ public class Referee {
         
         Set<Entry<String,List<Integer>>> entrySetScoreboard = scoreboard.entrySet();
         for(Entry<String,List<Integer>> entry: entrySetScoreboard){
-            MapWinnersInSector.put(entry.getKey(),Collections.max(entry.getValue()));
+            bestScoresInSector.put(entry.getKey(),Collections.max(entry.getValue()));
         }       
-        return MapWinnersInSector;
+        return bestScoresInSector;
     }
 }
