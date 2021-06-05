@@ -1,8 +1,13 @@
 package Places;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
+import java.util.Set;
+
+import com.google.common.collect.Multiset.Entry;
 
 public class Stadium {
     private List <Sector> sectorList;
@@ -25,9 +30,9 @@ public class Stadium {
         }
     }
 
-    public void performCompetition(){
+    public void performCompetition(Random random){
         for(Sector sector: sectorList){
-            sector.referee.judge();
+            sector.referee.judge(random);
         }
     }
 
@@ -61,6 +66,15 @@ public class Stadium {
             }
         }
         //TODO: Raise an error, sector not found
+        return null;
+    }
+
+    public Map<String, Integer> getResults(){
+        Map <String, Integer> track_scoreboard_unified = new HashMap<String, Integer>();
+        for(Sector sector : sectorList){
+            Map <String, Integer> scoreboard = sector.referee.getResults(); 
+                
+        }
         return null;
     }
 }

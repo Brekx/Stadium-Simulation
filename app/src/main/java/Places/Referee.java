@@ -15,7 +15,6 @@ public class Referee {
     private static int type;
 
     private Sector judgingSector;
-    private Random random;
     private Map <String, List<Integer>> scoreboard; 
     private Map <String,Integer> bestScoresInSector;
 
@@ -24,7 +23,7 @@ public class Referee {
         this.judgingSector = judgingSector;
     }
 
-    public void judge(){
+    public void judge(Random random){
         List <Competitor> queue = judgingSector.getQueue();
         for(Competitor competitor: queue){
             if(type<1){

@@ -13,7 +13,7 @@ public class Simulation {
     private List <Competitor> competitorsList;
 
     Simulation(Generator generator, Random random, int number_of_iterations){
-        this.competitorsList = generator.generateCompetitors();
+        this.competitorsList = generator.generateCompetitors(random);
         this.random = random;
         this.number_of_iterations = number_of_iterations;
         this.stadium = new Stadium(1, 1, 1, random);
@@ -27,10 +27,11 @@ public class Simulation {
             }
 
             //Performing time
-            stadium.performCompetition();
+            stadium.performCompetition(random);
 
         }
         //Result time
+        
     }
 
     public static void main(String[] strings){
