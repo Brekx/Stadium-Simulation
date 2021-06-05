@@ -13,7 +13,7 @@ import People.Sprinter;
 
 public class Generator {
     private int competitors_number;
-    List<Competitor> competitorsList ;
+    List<Competitor> competitorsList;
     Jumper jumper1;
     Sprinter sprinter1; 
     LongDistanceRunner longDistanceRunner1;
@@ -25,7 +25,7 @@ public class Generator {
 
     List <Competitor> generateCompetitors(){
         Random random = new Random();
-        competitorsList = new ArrayList<>() ;
+        competitorsList = new ArrayList<Competitor>() ;
 
         File file = new File("names.txt");
         Scanner scanner1 = new Scanner(file);
@@ -35,53 +35,35 @@ public class Generator {
         
         for(int i=0;i<competitors_number;i++){
 
-            int random_competitor_type=random.nextInt(2); 
+            random_name_number = random.nextInt(18238);
+            for(int j=0;j<random_name_number;j++){
+                line = scanner1.nextLine();
+            }
+
+            int random_competitor_type=random.nextInt(3); 
             switch(random_competitor_type){
                 case 0: 
-                
-                random_name_number = random.nextInt(18238);
-
-                for(int j=0;j<random_name_number;j++){
-                    line = scanner1.nextLine();
-                }
-
                 jumper1.name = line;
                 jumper1.strength = random.nextInt(101);
                 jumper1.speed = random.nextInt(101);
                 jumper1.prep = random.nextInt(101);
-
                 competitorsList.add(jumper1);
-
                 break;
+
                 case 1:
-                random_name_number = random.nextInt(18238);
-
-                for(int j=0;j<random_name_number;j++){
-                    line = scanner1.nextLine();
-                }
-
                 sprinter1.name = line;
                 sprinter1.strength = random.nextInt(101);
                 sprinter1.speed = random.nextInt(101);
                 sprinter1.prep = random.nextInt(101);
-
                 competitorsList.add(sprinter1);
-
                 break;
+
                 case 2:
-                random_name_number = random.nextInt(18238);
-
-                for(int j=0;j<random_name_number;j++){
-                    line = scanner1.nextLine();
-                }
-
                 longDistanceRunner1.name = line;
                 longDistanceRunner1.strength = random.nextInt(101);
                 longDistanceRunner1.speed = random.nextInt(101);
                 longDistanceRunner1.prep = random.nextInt(101);
-
-                competitorsList.add(longDistanceRunner1);
-                
+                competitorsList.add(longDistanceRunner1);               
                 break;
             }
         }
@@ -89,4 +71,3 @@ public class Generator {
     } 
     
 }
-
