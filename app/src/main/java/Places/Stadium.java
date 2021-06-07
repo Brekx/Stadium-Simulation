@@ -1,19 +1,19 @@
 package Places;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
-
-import com.google.common.collect.Multiset.Entry;
+import java.util.Map.Entry;
 
 public class Stadium {
     private List <Sector> sectorList;
-
     private int last_index_track, last_index_sandpit, last_index_cloakroom;
-    
+
     public Stadium(int tracks, int sandpits, int cloakrooms, Random random){
         sectorList = new ArrayList<Sector>();
         for(int i=0; i<tracks; i++){
@@ -69,12 +69,31 @@ public class Stadium {
         return null;
     }
 
-    public Map<String, Integer> getResults(){
+    public void getResults(){
         Map <String, Integer> track_scoreboard_unified = new HashMap<String, Integer>();
+        Map <String, Integer> sandpit_scoreboard_unified = new HashMap<String, Integer>();
         for(Sector sector : sectorList){
-            Map <String, Integer> scoreboard = sector.referee.getResults(); 
-                
+            Map <String, Integer> scoreboard = sector.referee.getResults();
+            Set<Entry<String,Integer>> entrySectorResults = scoreboard.entrySet();
+            
+            if(sector.referee.type==1){//to pewnie bd do zmiany jak zrobisz to co chciales z typeami
+                for(Entry<String,Integer> entry: entrySectorResults){
+                    track_scoreboard_unified.put(entry.getKey(),entry.getValue());
+                }
+            }
+            else if(sector.referee.type==0){//same here
+                for(Entry<String,Integer> entry: entrySectorResults){
+                    sandpit_scoreboard_unified.put(entry.getKey(),entry.getValue());
+                }  
+            }
         }
-        return null;
+        //System.out.println("Unsorted Map track : " + track_scoreboard_unified);
+        LinkedHashMap<String, Integer> reverseSortedMapTrack = new LinkedHashMap<>();
+        track_scoreboard_unified.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())) .forEachOrdered(x -> reverseSortedMapTrack.put(x.getKey(), x.getValue()));
+        System.out.println("Results on track : " + reverseSortedMapTrack);
+        //System.out.println("Unsorted Map sandpit : " + sandpit_scoreboard_unified);
+        LinkedHashMap<String, Integer> reverseSortedMapSandpit = new LinkedHashMap<>();
+        sandpit_scoreboard_unified.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())) .forEachOrdered(x -> reverseSortedMapSandpit.put(x.getKey(), x.getValue()));
+        System.out.println("Results on sandpit : " + reverseSortedMapSandpit);
     }
 }
