@@ -15,6 +15,6 @@ public class LongDistanceRunner extends Competitor {
     }
 
     public int run(int param1){
-        return 0;
+        return (int) (param1*(.2*strength+.2*speed+.6*prep));
     }
 }

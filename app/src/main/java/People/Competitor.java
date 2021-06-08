@@ -10,7 +10,7 @@ public abstract class Competitor {
     public String name;
     public CompetitorsTypes type;
 
-    private int strength, speed, prep;
+    protected int strength, speed, prep;
 
     public Competitor(String name, int strength, int speed, int prep){
         if(strength >= 0 && strength <= 100 && speed >= 0 && speed <= 100 && prep >= 0 && prep <= 100){
