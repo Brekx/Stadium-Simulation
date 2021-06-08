@@ -3,9 +3,11 @@ package People;
 import java.util.Random;
 
 import Places.Stadium;
+import Utilities.CompetitorsTypes;
 
 public abstract class Competitor {
     public String name;
+    public CompetitorsTypes type;
 
     private int strength, speed, prep;
 

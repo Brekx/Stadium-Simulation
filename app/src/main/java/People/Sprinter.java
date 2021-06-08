@@ -1,9 +1,12 @@
 package People;
 
+import Utilities.CompetitorsTypes;
+
 public class Sprinter extends Competitor {
 
     public Sprinter(String name, int strength, int speed, int prep){
         super(name, strength, speed, prep);
+        type = CompetitorsTypes.sprinter;
     }
 
     @Override

@@ -13,6 +13,7 @@ import java.util.Map.Entry;
 public class Stadium {
     private List <Sector> sectorList;
     private int last_index_track, last_index_sandpit, last_index_cloakroom;
+    
 
     public Stadium(int tracks, int sandpits, int cloakrooms, Random random){
         sectorList = new ArrayList<Sector>();

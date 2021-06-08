@@ -10,15 +10,15 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 import People.Competitor;
+import Utilities.SectorTypes;
 
 public class Referee {
-    private static int type;
 
     private Sector judgingSector;
     private Map <String, List<Integer>> scoreboard; 
     private Map <String,Integer> bestScoresInSector;
 
-    Referee(Sector judgingSector, Random random, int type){
+    Referee(Sector judgingSector, Random random){
         scoreboard = new HashMap<String, List<Integer>>();
         this.judgingSector = judgingSector;
     }
@@ -26,7 +26,10 @@ public class Referee {
     public void judge(Random random){
         List <Competitor> queue = judgingSector.getQueue();
         for(Competitor competitor: queue){
-            if(type<1){
+            if(judgingSector.type == SectorTypes.cloakroom){
+                competitor.prepare(random.nextInt(100));
+            }
+            else{
                 if(scoreboard.containsKey(competitor.name)){
                     scoreboard.get(competitor.name).add(competitor.perform(random.nextInt(100)));
                 }
@@ -35,9 +38,6 @@ public class Referee {
                     to_add.add(competitor.perform(random.nextInt(100)));
                     scoreboard.put(competitor.name, to_add);
                 }
-            }
-            else {
-                competitor.prepare(random.nextInt(100));
             }
         }
     }
