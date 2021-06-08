@@ -63,8 +63,7 @@ public class Stadium {
                 return (Track) sectorList.get(i%sectorList.size());
             }
         }
-        //TODO: Raise an error, sector not found
-        return null;
+        throw new NoSuchFieldError("No Tracks");
     }
 
     public Sandpit getSandpit(){
@@ -74,8 +73,7 @@ public class Stadium {
                 return (Sandpit) sectorList.get(i%sectorList.size());
             }
         }
-        //TODO: Raise an error, sector not found
-        return null;
+        throw new NoSuchFieldError("No Sandpits");
     }
 
     public Cloakroom getCloakroom(){
@@ -85,8 +83,7 @@ public class Stadium {
                 return (Cloakroom) sectorList.get(i%sectorList.size());
             }
         }
-        //TODO: Raise an error, sector not found
-        return null;
+        throw new NoSuchFieldError("No Cloakrooms");
     }
 
     public void getResults(){
