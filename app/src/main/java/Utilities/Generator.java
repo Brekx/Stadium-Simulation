@@ -26,7 +26,7 @@ public class Generator {
     List <Competitor> generateCompetitors(Random random){
         competitorsList = new ArrayList<Competitor>() ;
 
-        File file = new File("names.txt");
+        File file = new File("app/src/main/resources/names.txt");
         Scanner scanner1;
 
         String name;

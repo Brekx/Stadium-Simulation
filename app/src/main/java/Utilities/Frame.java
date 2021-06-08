@@ -1,8 +1,10 @@
+package Utilities;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Map;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,14 +14,15 @@ import javax.swing.JButton;
 public class Frame extends JFrame implements ActionListener {
  
 	JLabel lShowResultsJumpers,lShowResultsSprinters,lShowResultsLDRunners,ltext,lTextJumpers,lTextSprinters,lTextLDRunners;
+	FlowControl flowControl;
     
 
- 	public Frame() {
+ 	public Frame(Map <CompetitorsTypes, String> scoreboard) {
 		setSize(700,820);
 		setTitle("Results in competition");
 		setLayout(null);
 
-		ltext = new JLabel("to simulate competition and get results click the button below");
+		ltext = new JLabel("Oj jezu takie są wyniki");
 		ltext.setFont(new Font("Cambria",Font.PLAIN,15));
 		ltext.setForeground(new Color(0,0,0));
 		ltext.setBounds(150,40,400,20);
@@ -66,17 +69,26 @@ public class Frame extends JFrame implements ActionListener {
 		lShowResultsLDRunners.setForeground(new Color(190,0,100));
 		lShowResultsLDRunners.setFont(new Font("Bahnschrift",Font.PLAIN,15));
 		add(lShowResultsLDRunners);   
+
+		lTextJumpers.setText("CATEGORY:  JUMPING: ");
+		lShowResultsJumpers.setText(scoreboard.get(CompetitorsTypes.jumper));//rzutowanie .toString()
+		lTextSprinters.setText("CATEGORY:  SPRINT: ");
+		lShowResultsSprinters.setText(scoreboard.get(CompetitorsTypes.sprinter));
+		lTextLDRunners.setText("CATEGORY:  LONG DISTANCE RUN: ");
+		lShowResultsLDRunners.setText(scoreboard.get(CompetitorsTypes.long_distance_runner));
 		
 	}
-	public static void main(String[] args){
-		Frame frame = new Frame();
-		ImageIcon icon = new ImageIcon("tabela_wynikow.jpg");
+
+	public static void view(FlowControl flowControl){
+		Frame frame = new Frame(flowControl.getResults());
+		ImageIcon icon = new ImageIcon("app/src/main/resources/tabela_wynikow.jpg");
 		JLabel label = new JLabel(icon);
 		label.setBounds(0,0,700,800);
 		frame.add(label);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}
+
  	@Override
 	public void actionPerformed(ActionEvent e){
 		lTextJumpers.setText("CATEGORY:  JUMPING: ");

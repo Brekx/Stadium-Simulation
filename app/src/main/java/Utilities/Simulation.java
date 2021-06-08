@@ -1,7 +1,7 @@
 package Utilities;
 
+import java.util.Map;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 import Places.Stadium;
 
@@ -24,17 +24,18 @@ public class Simulation implements FlowControl {
             //Choosing queues
             stadium.performMovement(random);
             //Performing time
-            stadium.performCompetition(random, 2);
+            stadium.performCompetition(random, 0);
         }
-        //Result time
-        stadium.getResults();
+        viewUtility.getFrame().setVisible(false);
     }
 
     public static void main(String[] strings){
-        Generator generator = new Generator(5);
+        Generator generator = new Generator(150);
         Random random = new Random();
         Simulation simulation = new Simulation(generator, random, 5);
         simulation.runSimulation();
+
+        Frame.view(simulation);
     }
 
     @Override
@@ -52,5 +53,10 @@ public class Simulation implements FlowControl {
     @Override
     public void addContest(int index) {
         viewUtility.getCanva().sectorViews.get(index).current_people++;
+    }
+
+    @Override
+    public Map<CompetitorsTypes, String> getResults() {
+        return stadium.getResults();
     }
 }

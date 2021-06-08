@@ -50,7 +50,7 @@ public class Canva extends JPanel {
       public void actionPerformed(ActionEvent e) {
         ludzik_position = move_path(current_frame, start, end);
         current_frame++;
-        if(current_frame > 100){
+        if(current_frame > 1){
           current_frame = 0;
           animacja = false;
           ((Timer)e.getSource()).stop();

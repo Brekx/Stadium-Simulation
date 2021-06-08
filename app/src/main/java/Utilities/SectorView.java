@@ -69,7 +69,7 @@ public class SectorView {
               break;
           }
           current_frame++;
-          if(current_frame>100){
+          if(current_frame>1){
             current_frame = 0;
             animation = false;
             ((Timer)e.getSource()).stop();

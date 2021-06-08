@@ -92,8 +92,9 @@ public class Stadium {
         throw new NoSuchFieldError("No Cloakrooms");
     }
 
-    public void getResults(){
+    public Map <CompetitorsTypes, String> getResults(){
         Map <CompetitorsTypes, Map<Competitor, Integer>> scoreboard_unified = new HashMap<CompetitorsTypes, Map<Competitor, Integer>>();
+        Map <CompetitorsTypes, String> results = new HashMap<CompetitorsTypes, String>();
         for(Sector sector : sectorList){
             Map <Competitor, Integer> scoreboard = sector.referee.getResults();
             Set<Entry<Competitor,Integer>> entrySectorResults = scoreboard.entrySet();
@@ -110,10 +111,18 @@ public class Stadium {
         }
 
         for(CompetitorsTypes competitorsTypes: scoreboard_unified.keySet()){
-            System.out.print("Wynik w " + competitorsTypes.toString() + " ");
+            String to_add = "";
             LinkedHashMap<Competitor, Integer> reverseSortedMap = new LinkedHashMap<>();
             scoreboard_unified.get(competitorsTypes).entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())) .forEachOrdered(x -> reverseSortedMap.put(x.getKey(), x.getValue()));
             System.out.println(reverseSortedMap);
+            
+
+            Set<Entry<Competitor,Integer>> entrySetScoreboard = reverseSortedMap.entrySet();
+            for(Entry<Competitor,Integer> entry: entrySetScoreboard){
+                to_add += entry.getKey().name + "\t" + entry.getValue() + "\n";
+            }
+            results.put(competitorsTypes, to_add);
         }
+        return results;
     }
 }
