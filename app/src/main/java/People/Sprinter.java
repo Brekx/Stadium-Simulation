@@ -11,10 +11,10 @@ public class Sprinter extends Competitor {
 
     @Override
     public int perform(int param1) {
-        return run(param1);
+        return sprint(param1);
     }
 
-    public int run(int param1){
+    public int sprint(int param1){
         return 0;
     }
 }
