@@ -12,13 +12,21 @@ public abstract class Sector {
     protected Referee referee;
     public SectorTypes type;
 
-    Sector(Random random, int type){
+    Sector(Random random){
         queue = new ArrayList<Competitor>();
         referee = new Referee(this, random);
     }
 
     public void joinQueue(Competitor competitor){
         queue.add(competitor);
+    }
+
+    public void leaveQueue(Competitor competitor){
+        try{
+            queue.remove(competitor);
+        }
+        catch(Exception e){
+        }
     }
 
     public List<Competitor> getQueue(){

@@ -6,7 +6,7 @@ import Utilities.SectorTypes;
 
 public class Track extends Sector {
     Track(Random random){
-        super(random, 1);
+        super(random);
         type =  SectorTypes.track;
     }
 }

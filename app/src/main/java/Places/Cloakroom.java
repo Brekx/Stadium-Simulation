@@ -6,7 +6,7 @@ import Utilities.SectorTypes;
 
 public class Cloakroom extends Sector {
     Cloakroom(Random random){
-        super(random, 0);
+        super(random);
         type  = SectorTypes.cloakroom;
     }
 }

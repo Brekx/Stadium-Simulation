@@ -6,7 +6,7 @@ import Utilities.SectorTypes;
 
 public class Sandpit extends Sector {
     Sandpit(Random random){
-        super(random, 2);
+        super(random);
         type = SectorTypes.sandpit;
     }
 }
