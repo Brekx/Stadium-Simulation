@@ -15,11 +15,10 @@ import Utilities.SectorTypes;
 public class Referee {
 
     private Sector judgingSector;
-    private Map <String, List<Integer>> scoreboard; 
-    private Map <String,Integer> bestScoresInSector;
+    private Map <Competitor, List<Integer>> scoreboard;
 
     Referee(Sector judgingSector, Random random){
-        scoreboard = new HashMap<String, List<Integer>>();
+        scoreboard = new HashMap<Competitor, List<Integer>>();
         this.judgingSector = judgingSector;
     }
 
@@ -30,22 +29,23 @@ public class Referee {
                 competitor.prepare(random.nextInt(100));
             }
             else{
-                if(scoreboard.containsKey(competitor.name)){
-                    scoreboard.get(competitor.name).add(competitor.perform(random.nextInt(100)));
+                if(scoreboard.containsKey(competitor)){
+                    scoreboard.get(competitor).add(competitor.perform(random.nextInt(100)));
                 }
                 else{
                     List<Integer> to_add = new ArrayList<Integer>();
                     to_add.add(competitor.perform(random.nextInt(100)));
-                    scoreboard.put(competitor.name, to_add);
+                    scoreboard.put(competitor, to_add);
                 }
             }
         }
     }
 
-    public Map<String, Integer> getResults(){ 
+    public Map<Competitor, Integer> getResults(){ 
+        Map <Competitor, Integer> bestScoresInSector = new HashMap<Competitor, Integer>();
         
-        Set<Entry<String,List<Integer>>> entrySetScoreboard = scoreboard.entrySet();
-        for(Entry<String,List<Integer>> entry: entrySetScoreboard){
+        Set<Entry<Competitor,List<Integer>>> entrySetScoreboard = scoreboard.entrySet();
+        for(Entry<Competitor,List<Integer>> entry: entrySetScoreboard){
             bestScoresInSector.put(entry.getKey(),Collections.max(entry.getValue()));
         }       
         return bestScoresInSector;

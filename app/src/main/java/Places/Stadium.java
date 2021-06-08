@@ -10,12 +10,15 @@ import java.util.Random;
 import java.util.Set;
 import java.util.Map.Entry;
 
+import People.Competitor;
+import Utilities.CompetitorsTypes;
+
 public class Stadium {
     private List <Sector> sectorList;
     private int last_index_track, last_index_sandpit, last_index_cloakroom;
-    
 
-    public Stadium(int tracks, int sandpits, int cloakrooms, Random random){
+
+    public Stadium(int tracks, int sandpits, int cloakrooms, Random random, List <Competitor> competitors){
         sectorList = new ArrayList<Sector>();
         for(int i=0; i<tracks; i++){
             Track to_add = new Track(random);
@@ -29,11 +32,27 @@ public class Stadium {
             Cloakroom to_add = new Cloakroom(random);
             sectorList.add(to_add);
         }
+        for(Competitor competitor:competitors){
+            getCloakroom().joinQueue(competitor);
+        }
     }
 
     public void performCompetition(Random random){
         for(Sector sector: sectorList){
             sector.referee.judge(random);
+        }
+    }
+
+    public void performMovement(Random random){
+        List <Competitor> already_moved = new ArrayList<Competitor>();
+        for(Sector sector: sectorList){
+            for(Competitor competitor: new ArrayList<Competitor>(sector.getQueue())){
+                if(!already_moved.contains(competitor)){
+                    sector.leaveQueue(competitor);
+                    competitor.move(this, random);
+                    already_moved.add(competitor);
+                }
+            }
         }
     }
 
@@ -71,30 +90,35 @@ public class Stadium {
     }
 
     public void getResults(){
-        Map <String, Integer> track_scoreboard_unified = new HashMap<String, Integer>();
-        Map <String, Integer> sandpit_scoreboard_unified = new HashMap<String, Integer>();
+        Map <CompetitorsTypes, Map<Competitor, Integer>> scoreboard_unified = new HashMap<CompetitorsTypes, Map<Competitor, Integer>>();
         for(Sector sector : sectorList){
-            Map <String, Integer> scoreboard = sector.referee.getResults();
-            Set<Entry<String,Integer>> entrySectorResults = scoreboard.entrySet();
+            Map <Competitor, Integer> scoreboard = sector.referee.getResults();
+            Set<Entry<Competitor,Integer>> entrySectorResults = scoreboard.entrySet();
             
-            if(sector.referee.type==1){//to pewnie bd do zmiany jak zrobisz to co chciales z typeami
-                for(Entry<String,Integer> entry: entrySectorResults){
-                    track_scoreboard_unified.put(entry.getKey(),entry.getValue());
+            for(Entry<Competitor,Integer> entry: entrySectorResults){
+                if(scoreboard_unified.containsKey(entry.getKey().type)){
+                    scoreboard_unified.get(entry.getKey().type).put(entry.getKey(), entry.getValue());
+                }
+                else{
+                    scoreboard_unified.put(entry.getKey().type, new HashMap<Competitor, Integer>());
                 }
             }
-            else if(sector.referee.type==0){//same here
-                for(Entry<String,Integer> entry: entrySectorResults){
-                    sandpit_scoreboard_unified.put(entry.getKey(),entry.getValue());
-                }  
-            }
+
         }
         //System.out.println("Unsorted Map track : " + track_scoreboard_unified);
-        LinkedHashMap<String, Integer> reverseSortedMapTrack = new LinkedHashMap<>();
-        track_scoreboard_unified.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())) .forEachOrdered(x -> reverseSortedMapTrack.put(x.getKey(), x.getValue()));
-        System.out.println("Results on track : " + reverseSortedMapTrack);
-        //System.out.println("Unsorted Map sandpit : " + sandpit_scoreboard_unified);
-        LinkedHashMap<String, Integer> reverseSortedMapSandpit = new LinkedHashMap<>();
-        sandpit_scoreboard_unified.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())) .forEachOrdered(x -> reverseSortedMapSandpit.put(x.getKey(), x.getValue()));
-        System.out.println("Results on sandpit : " + reverseSortedMapSandpit);
+        // LinkedHashMap<Competitor, Integer> reverseSortedMapTrack = new LinkedHashMap<>();
+        // track_scoreboard_unified.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())) .forEachOrdered(x -> reverseSortedMapTrack.put(x.getKey(), x.getValue()));
+        // System.out.println("Results on track : " + reverseSortedMapTrack);
+        // //System.out.println("Unsorted Map sandpit : " + sandpit_scoreboard_unified);
+        // LinkedHashMap<Competitor, Integer> reverseSortedMapSandpit = new LinkedHashMap<>();
+        // sandpit_scoreboard_unified.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())) .forEachOrdered(x -> reverseSortedMapSandpit.put(x.getKey(), x.getValue()));
+        // System.out.println("Results on sandpit : " + reverseSortedMapSandpit);
+
+        for(CompetitorsTypes competitorsTypes: scoreboard_unified.keySet()){
+            System.out.print("Wynik w " + competitorsTypes.toString() + " ");
+            LinkedHashMap<Competitor, Integer> reverseSortedMap = new LinkedHashMap<>();
+            scoreboard_unified.get(competitorsTypes).entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())) .forEachOrdered(x -> reverseSortedMap.put(x.getKey(), x.getValue()));
+            System.out.println(reverseSortedMap);
+        }
     }
 }
