@@ -15,6 +15,6 @@ public class Jumper extends Competitor {
     }
 
     public int jump(int param1){
-        return (int) (param1*(.5*strength+.2*speed+.3*prep));
+        return (int) (.01*param1*(.5*strength+.2*speed+.3*prep));
     }
 }

@@ -15,6 +15,6 @@ public class Sprinter extends Competitor {
     }
 
     public int sprint(int param1){
-        return (int) (param1*(.1*strength+.6*speed+.3*prep));
+        return (int) (.01*param1*(.1*strength+.6*speed+.3*prep));
     }
 }

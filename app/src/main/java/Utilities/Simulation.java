@@ -30,7 +30,7 @@ public class Simulation implements FlowControl {
     }
 
     public static void main(String[] strings){
-        Generator generator = new Generator(150);
+        Generator generator = new Generator(10);
         Random random = new Random();
         Simulation simulation = new Simulation(generator, random, 5);
         simulation.runSimulation();

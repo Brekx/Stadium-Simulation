@@ -20,11 +20,7 @@ public abstract class Competitor {
             this.prep = prep;
         }
         else {
-            //TODO: Exception wrong stats
-            this.name =  "ADAM";
-            this.strength = 20;
-            this.speed = 15;
-            this.prep = 4;
+            throw new Error("Wrong stat values");
         }
     }
 

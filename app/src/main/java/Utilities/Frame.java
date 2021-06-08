@@ -41,7 +41,7 @@ public class Frame extends JFrame implements ActionListener {
 		add(lTextJumpers);
 
 		lShowResultsJumpers = new JLabel();
-		lShowResultsJumpers.setBounds(120,320,400,20);
+		lShowResultsJumpers.setBounds(120,320,400,100);
 		lShowResultsJumpers.setForeground(new Color(190,0,100));
 		lShowResultsJumpers.setFont(new Font("Bahnschrift",Font.PLAIN,15));
 		add(lShowResultsJumpers);
@@ -53,7 +53,7 @@ public class Frame extends JFrame implements ActionListener {
 		add(lTextSprinters);
 
 		lShowResultsSprinters = new JLabel();
-		lShowResultsSprinters.setBounds(120,470,400,20);
+		lShowResultsSprinters.setBounds(120,470,400,100);
 		lShowResultsSprinters.setForeground(new Color(190,0,100));
 		lShowResultsSprinters.setFont(new Font("Bahnschrift",Font.PLAIN,15));
 		add(lShowResultsSprinters);
@@ -65,7 +65,7 @@ public class Frame extends JFrame implements ActionListener {
 		add(lTextLDRunners);
 
 		lShowResultsLDRunners = new JLabel();
-		lShowResultsLDRunners.setBounds(120,610,400,20);
+		lShowResultsLDRunners.setBounds(120,610,400,100);
 		lShowResultsLDRunners.setForeground(new Color(190,0,100));
 		lShowResultsLDRunners.setFont(new Font("Bahnschrift",Font.PLAIN,15));
 		add(lShowResultsLDRunners);   
