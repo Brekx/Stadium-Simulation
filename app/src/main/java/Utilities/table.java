@@ -8,7 +8,7 @@ import java.awt.Image;
 public class table extends JPanel {
     Image img;
     table(){
-        img = new ImageIcon("tabela_wynikow.png").getImage();
+        img = new ImageIcon("tabela_wynikow.jpg").getImage();
     }
 
     public void paint(Graphics g){
