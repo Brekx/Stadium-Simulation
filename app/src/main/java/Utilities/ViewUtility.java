@@ -14,6 +14,9 @@ public class ViewUtility {
     frame.setSize(800, 600);
     frame.add(canva);
     frame.setVisible(true);
-    canva.move(new Dimension(20, 100), new Dimension(700, 500));
+    canva.move(new Dimension(20, 100), new Dimension(500, 100));
+    canva.sectorViews.get(0).animate();
+    canva.sectorViews.get(2).animate();
+    canva.sectorViews.get(4).animate();
   }
 }

@@ -24,6 +24,12 @@ public class Canva extends JPanel {
   Canva(JFrame frame){
     this.frame = frame;
     generarateSectors(2, 2, 2);
+    new Timer(10, new ActionListener(){
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        updateView();
+      }
+    }).start();
   }
 
   @Override
@@ -56,7 +62,6 @@ public class Canva extends JPanel {
           animacja = false;
           ((Timer)e.getSource()).stop();
         }
-        updateView();
       }
     }).start();
   }

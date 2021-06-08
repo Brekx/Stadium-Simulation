@@ -19,7 +19,7 @@ public abstract class Sector {
         queue.add(competitor);
     }
 
-    public List<Competitor> getQueue(){
+    protected List<Competitor> getQueue(){
         return queue;
     }
 }
