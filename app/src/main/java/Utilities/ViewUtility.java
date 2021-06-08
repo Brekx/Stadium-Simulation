@@ -1,22 +1,41 @@
 package Utilities;
 
-import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.Timer;
 
 public class ViewUtility {
-  static JLabel jLabel;
-  public static void main(String args[]){
-    JFrame frame = new JFrame("Stadium-Simulation");
-    Canva canva = new Canva(frame);
+  private JFrame frame;
+  private Canva canva;
+
+  public void makeView(){
+    frame = new JFrame("Stadium-Simulation");
+    canva = new Canva(2, 2, 2);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(800, 600);
     frame.add(canva);
     frame.setVisible(true);
-    canva.move(new Dimension(20, 100), new Dimension(500, 100));
-    canva.sectorViews.get(0).animate();
-    canva.sectorViews.get(2).animate();
-    canva.sectorViews.get(4).animate();
+    new Timer(10, new ActionListener(){
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        frame.revalidate();
+        frame.repaint();
+      }
+    }).start();
+  }
+
+  public JFrame getFrame(){
+    return frame;
+  }
+
+  public Canva getCanva(){
+    return canva;
+  }
+
+  public static void main(String arg[]){
+    ViewUtility viewUtility = new ViewUtility();
+    viewUtility.makeView();
   }
 }

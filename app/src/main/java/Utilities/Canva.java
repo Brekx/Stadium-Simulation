@@ -10,26 +10,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class Canva extends JPanel {
-  JFrame frame;
   List <SectorView> sectorViews;
   Dimension ludzik_position;
   Boolean animacja = false;
   int current_frame = 0;
 
-  Canva(JFrame frame){
-    this.frame = frame;
-    generarateSectors(2, 2, 2);
-    new Timer(10, new ActionListener(){
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        updateView();
-      }
-    }).start();
+  Canva(int tracks, int sandpits, int cloakrooms){
+    generarateSectors(tracks, cloakrooms, sandpits);
   }
 
   @Override
@@ -64,11 +55,6 @@ public class Canva extends JPanel {
         }
       }
     }).start();
-  }
-
-  private void updateView(){
-    frame.revalidate();
-    frame.repaint();
   }
 
   private void generarateSectors(int tracks, int cloakrooms, int sandpits){
