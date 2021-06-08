@@ -37,6 +37,10 @@ public class Canva extends JPanel {
     }
   }
 
+  public void moveBetween(int index_from, int index_to){
+    move(sectorViews.get(index_from).getPosition(), sectorViews.get(index_to).getPosition());
+  }
+
   public void move(Dimension start, Dimension end){
     int dx=(int) (end.getWidth()-start.getWidth())/100,
       dy=(int) (end.getHeight()-start.getHeight())/100;

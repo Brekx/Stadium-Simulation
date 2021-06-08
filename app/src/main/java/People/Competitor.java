@@ -2,6 +2,7 @@ package People;
 
 import java.util.Random;
 
+import Places.Sector;
 import Places.Stadium;
 import Utilities.CompetitorsTypes;
 
@@ -38,20 +39,21 @@ public abstract class Competitor {
             prep = 100;
     }
 
-    public void move(Stadium stadium, Random random){
+    public Sector move(Stadium stadium, Random random){
+        Sector sector;
         switch(random.nextInt(3)){
             case 0:
-                stadium.getTrack().joinQueue(this);
+                sector = stadium.getTrack();
                 break;
             case 1:
-                stadium.getCloakroom().joinQueue(this);
-                break;
-            case 2:
-                stadium.getSandpit().joinQueue(this);
+                sector = stadium.getCloakroom();
                 break;
             default:
+                sector = stadium.getSandpit();
                 break;
         }
+        sector.joinQueue(this);
+        return sector;
     }
 }
 

@@ -12,33 +12,39 @@ import java.util.Map.Entry;
 
 import People.Competitor;
 import Utilities.CompetitorsTypes;
+import Utilities.FlowControl;
 
 public class Stadium {
     private List <Sector> sectorList;
     private int last_index_track, last_index_sandpit, last_index_cloakroom;
+    private FlowControl flowControl;
 
 
-    public Stadium(int tracks, int sandpits, int cloakrooms, Random random, List <Competitor> competitors){
+    public Stadium(int tracks, int sandpits, int cloakrooms, Random random, List <Competitor> competitors, FlowControl flowControl){
+        this.flowControl = flowControl;
         sectorList = new ArrayList<Sector>();
-        for(int i=0; i<tracks; i++){
-            Track to_add = new Track(random);
+        for(int i=0; i<cloakrooms; i++){
+            Cloakroom to_add = new Cloakroom(random);
             sectorList.add(to_add);
         }
         for(int i=0; i<sandpits; i++){
             Sandpit to_add = new Sandpit(random);
             sectorList.add(to_add);
         }
-        for(int i=0; i<cloakrooms; i++){
-            Cloakroom to_add = new Cloakroom(random);
+        for(int i=0; i<tracks; i++){
+            Track to_add = new Track(random);
             sectorList.add(to_add);
         }
         for(Competitor competitor:competitors){
-            getCloakroom().joinQueue(competitor);
+            Sector sector = getCloakroom();
+            sector.joinQueue(competitor);
+            flowControl.addContest(sectorList.indexOf(sector));
         }
     }
 
     public void performCompetition(Random random, int minimum_to_perform_competition){
         for(Sector sector: sectorList){
+            flowControl.perform_competition(sectorList.indexOf(sector));
             sector.referee.judge(random, minimum_to_perform_competition);
         }
     }
@@ -49,7 +55,7 @@ public class Stadium {
             for(Competitor competitor: new ArrayList<Competitor>(sector.getQueue())){
                 if(!already_moved.contains(competitor)){
                     sector.leaveQueue(competitor);
-                    competitor.move(this, random);
+                    flowControl.move(sectorList.indexOf(sector), sectorList.indexOf(competitor.move(this, random)));
                     already_moved.add(competitor);
                 }
             }

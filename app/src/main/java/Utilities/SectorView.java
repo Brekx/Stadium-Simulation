@@ -70,8 +70,8 @@ public class SectorView {
         current_frame++;
         if(current_frame>100){
           current_frame = 0;
-          // animation = false;
-          // ((Timer)e.getSource()).stop();
+          animation = false;
+          ((Timer)e.getSource()).stop();
         }
       }
     }).start();
