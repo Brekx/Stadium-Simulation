@@ -20,7 +20,7 @@ public class Simulation {
             //Choosing queues
             stadium.performMovement(random);
             //Performing time
-            stadium.performCompetition(random);
+            stadium.performCompetition(random, 2);
         }
         //Result time
         stadium.getResults();

@@ -37,9 +37,9 @@ public class Stadium {
         }
     }
 
-    public void performCompetition(Random random){
+    public void performCompetition(Random random, int minimum_to_perform_competition){
         for(Sector sector: sectorList){
-            sector.referee.judge(random);
+            sector.referee.judge(random, minimum_to_perform_competition);
         }
     }
 
@@ -105,14 +105,6 @@ public class Stadium {
             }
 
         }
-        //System.out.println("Unsorted Map track : " + track_scoreboard_unified);
-        // LinkedHashMap<Competitor, Integer> reverseSortedMapTrack = new LinkedHashMap<>();
-        // track_scoreboard_unified.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())) .forEachOrdered(x -> reverseSortedMapTrack.put(x.getKey(), x.getValue()));
-        // System.out.println("Results on track : " + reverseSortedMapTrack);
-        // //System.out.println("Unsorted Map sandpit : " + sandpit_scoreboard_unified);
-        // LinkedHashMap<Competitor, Integer> reverseSortedMapSandpit = new LinkedHashMap<>();
-        // sandpit_scoreboard_unified.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())) .forEachOrdered(x -> reverseSortedMapSandpit.put(x.getKey(), x.getValue()));
-        // System.out.println("Results on sandpit : " + reverseSortedMapSandpit);
 
         for(CompetitorsTypes competitorsTypes: scoreboard_unified.keySet()){
             System.out.print("Wynik w " + competitorsTypes.toString() + " ");
