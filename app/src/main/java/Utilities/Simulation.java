@@ -15,7 +15,7 @@ public class Simulation implements FlowControl {
         this.random = random;
         this.number_of_iterations = number_of_iterations;
         this.viewUtility = new ViewUtility();
-        this.viewUtility.makeView();
+        this.viewUtility.makeView(1, 1, 1);
         this.stadium = new Stadium(1, 1, 1, random, generator.generateCompetitors(random), this);
     }
 
@@ -25,7 +25,6 @@ public class Simulation implements FlowControl {
             stadium.performMovement(random);
             //Performing time
             stadium.performCompetition(random, 2);
-
         }
         //Result time
         stadium.getResults();
@@ -42,22 +41,12 @@ public class Simulation implements FlowControl {
     public void move(int index_from, int index_to) {
         viewUtility.getCanva().sectorViews.get(index_from).current_people--;
         viewUtility.getCanva().moveBetween(index_from, index_to);
-        try {
-            TimeUnit.SECONDS.sleep(1);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         viewUtility.getCanva().sectorViews.get(index_to).current_people++;
     }
 
     @Override
-    public void perform_competition(int index) {
-        viewUtility.getCanva().sectorViews.get(index).animate();
-        try {
-            TimeUnit.SECONDS.sleep(1);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    public void perform_competition() {
+        viewUtility.getCanva().sectorViews.forEach(x -> x.animate());
     }
 
     @Override

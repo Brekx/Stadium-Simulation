@@ -52,29 +52,34 @@ public class SectorView {
   }
 
   public void animate(){
-    animation  = true;
-    new Timer(10, new ActionListener(){
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        switch(type){
-          case cloakroom:
-            ludzik_position = cloakroom_path(current_frame);
-            break;
-          case sandpit:
-            ludzik_position = sandpit_path(current_frame);
-            break;
-          case track:
-            ludzik_position = track_path(current_frame);
-            break;
+    if(current_people>0){
+      animation  = true;
+      Timer timer = new Timer(10, new ActionListener(){
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          switch(type){
+            case cloakroom:
+              ludzik_position = cloakroom_path(current_frame);
+              break;
+            case sandpit:
+              ludzik_position = sandpit_path(current_frame);
+              break;
+            case track:
+              ludzik_position = track_path(current_frame);
+              break;
+          }
+          current_frame++;
+          if(current_frame>100){
+            current_frame = 0;
+            animation = false;
+            ((Timer)e.getSource()).stop();
+          }
         }
-        current_frame++;
-        if(current_frame>100){
-          current_frame = 0;
-          animation = false;
-          ((Timer)e.getSource()).stop();
-        }
-      }
-    }).start();
+      });
+      timer.start();
+      while(timer.isRunning())
+        continue;
+    }
   }
 
   private Dimension cloakroom_path(int frame){

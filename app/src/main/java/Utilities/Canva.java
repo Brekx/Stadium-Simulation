@@ -16,7 +16,7 @@ import javax.swing.Timer;
 public class Canva extends JPanel {
   List <SectorView> sectorViews;
   Dimension ludzik_position;
-  Boolean animacja = false;
+  boolean animacja = false;
   int current_frame = 0;
 
   Canva(int tracks, int sandpits, int cloakrooms){
@@ -38,27 +38,32 @@ public class Canva extends JPanel {
   }
 
   public void moveBetween(int index_from, int index_to){
-    move(sectorViews.get(index_from).getPosition(), sectorViews.get(index_to).getPosition());
+    if(index_from != index_to)
+      move(sectorViews.get(index_from).getPosition(), sectorViews.get(index_to).getPosition());
   }
 
   public void move(Dimension start, Dimension end){
-    int dx=(int) (end.getWidth()-start.getWidth())/100,
-      dy=(int) (end.getHeight()-start.getHeight())/100;
     ludzik_position = new Dimension(start.width, start.height);
     animacja = true;
-    new Timer(10, new ActionListener(){
+    Timer timer = new Timer(10, new ActionListener(){
       @Override
       public void actionPerformed(ActionEvent e) {
-        ludzik_position.width += dx;
-        ludzik_position.height += dy;
+        ludzik_position = move_path(current_frame, start, end);
         current_frame++;
-        if(current_frame>100){
+        if(current_frame > 100){
           current_frame = 0;
           animacja = false;
           ((Timer)e.getSource()).stop();
         }
       }
-    }).start();
+    });
+    timer.start();
+    while(timer.isRunning())
+      continue;
+  }
+
+  private static Dimension move_path(int frame, Dimension start, Dimension end){
+      return new Dimension((int) (start.getWidth()+frame*(end.getWidth()-start.getWidth())/100), (int) (start.getHeight()+frame*(end.getHeight()-start.getHeight())/100));
   }
 
   private void generarateSectors(int tracks, int cloakrooms, int sandpits){

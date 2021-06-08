@@ -10,9 +10,9 @@ public class ViewUtility {
   private JFrame frame;
   private Canva canva;
 
-  public void makeView(){
+  public void makeView(int tracks, int sandpits, int cloakrooms){
     frame = new JFrame("Stadium-Simulation");
-    canva = new Canva(2, 2, 2);
+    canva = new Canva(tracks, sandpits, cloakrooms);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(800, 600);
     frame.add(canva);
@@ -36,6 +36,6 @@ public class ViewUtility {
 
   public static void main(String arg[]){
     ViewUtility viewUtility = new ViewUtility();
-    viewUtility.makeView();
+    viewUtility.makeView(1, 1, 1);
   }
 }

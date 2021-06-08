@@ -44,9 +44,9 @@ public class Stadium {
 
     public void performCompetition(Random random, int minimum_to_perform_competition){
         for(Sector sector: sectorList){
-            flowControl.perform_competition(sectorList.indexOf(sector));
             sector.referee.judge(random, minimum_to_perform_competition);
         }
+        flowControl.perform_competition();
     }
 
     public void performMovement(Random random){
