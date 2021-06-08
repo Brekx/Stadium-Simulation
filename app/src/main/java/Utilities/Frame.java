@@ -79,11 +79,11 @@ public class Frame extends JFrame implements ActionListener {
 	}
  	@Override
 	public void actionPerformed(ActionEvent e){
-		lTextJumpers.setText("SCOREBOARD - JUMPERS: ");
+		lTextJumpers.setText("CATEGORY:  JUMPING: ");
 		lShowResultsJumpers.setText("-> wyniki do sciagniecia od jumpersow <-");//rzutowanie .toString()
-		lTextSprinters.setText("SCOREBOARD - SPRINTERS: ");
+		lTextSprinters.setText("CATEGORY:  SPRINT: ");
 		lShowResultsSprinters.setText("-> wyniki do sciagniecia od sprinterow <-");
-		lTextLDRunners.setText("SCOREBOARD - LONG DISTANCE RUNNERS: ");
+		lTextLDRunners.setText("CATEGORY:  LONG DISTANCE RUN: ");
 		lShowResultsLDRunners.setText("-> wyniki do sciagniecia od skoczkow <-");
 	}
 }
