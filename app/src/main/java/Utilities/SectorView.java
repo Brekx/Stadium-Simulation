@@ -21,15 +21,16 @@ public class SectorView {
     this.x = x;
     this.y = y;
     this.type = type;
+    // 200x150
     switch(type){
       case track:
-        image = new ImageIcon("app/src/main/resources/track.png");
+        image = new ImageIcon(new ImageIcon("app/src/main/resources/track.png").getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH));
         break;
       case cloakroom:
-        image = new ImageIcon("app/src/main/resources/cloakroom.png");
+        image = new ImageIcon(new ImageIcon("app/src/main/resources/cloakroom.png").getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH));
         break;
       case sandpit:
-        image = new ImageIcon("app/src/main/resources/sandpit.png");
+        image = new ImageIcon(new ImageIcon("app/src/main/resources/sandpit.png").getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH));
         break;
     }
   }

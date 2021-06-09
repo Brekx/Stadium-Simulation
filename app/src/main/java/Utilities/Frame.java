@@ -22,7 +22,7 @@ public class Frame extends JFrame implements ActionListener {
 		setTitle("Results in competition");
 		setLayout(null);
 
-		ltext = new JLabel("Oj jezu takie są wyniki");
+		ltext = new JLabel("Szanowna komisja orzekła wyniki");
 		ltext.setFont(new Font("Cambria",Font.PLAIN,15));
 		ltext.setForeground(new Color(0,0,0));
 		ltext.setBounds(150,40,400,20);

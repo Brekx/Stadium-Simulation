@@ -26,7 +26,7 @@ public class Canva extends JPanel {
   @Override
   protected void paintComponent(Graphics g) {
     super.paintComponent(g);
-    ImageIcon stadion = new ImageIcon("app/src/main/resources/stadion.png");
+    ImageIcon stadion = new ImageIcon(new ImageIcon("app/src/main/resources/stadion.png").getImage().getScaledInstance(800, 600, Image.SCALE_SMOOTH));
     g.drawImage(stadion.getImage(), 0, 0, null);
     for(SectorView sectorView : sectorViews){
       sectorView.drawSector(g);
