@@ -5,12 +5,20 @@ import java.util.Random;
 
 import Places.Stadium;
 
+/**Class representing simulation */
 public class Simulation implements FlowControl {
-    private int number_of_iterations;
-    private Random random;
-    private Stadium stadium;
-    private ViewUtility viewUtility;
+    private int number_of_iterations; ///< number of iterations
+    private Random random; ///< random value
+    private Stadium stadium; ///< stadium
+    private ViewUtility viewUtility; ///< view utility
 
+    /**
+     * Constructor with parameters
+     * 
+     * @param generator generator
+     * @param random random value
+     * @param number_of_iterations number of iterations
+     */
     Simulation(Generator generator, Random random, int number_of_iterations){
         this.random = random;
         this.number_of_iterations = number_of_iterations;
@@ -19,6 +27,10 @@ public class Simulation implements FlowControl {
         this.stadium = new Stadium(1, 1, 1, random, generator.generateCompetitors(random), this);
     }
 
+    /** 
+     * Method that runs the whole simulation
+     * 
+     */
     public void runSimulation(){
         for(int iteration = 0; iteration < number_of_iterations; iteration++){
             //Choosing queues

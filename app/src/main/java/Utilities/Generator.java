@@ -10,18 +10,27 @@ import People.Jumper;
 import People.LongDistanceRunner;
 import People.Sprinter;
 
+/**Class representing generator */
 public class Generator {
     private int competitors_number;
-    List<Competitor> competitorsList;
-    Jumper jumper1;
-    Sprinter sprinter1; 
-    LongDistanceRunner longDistanceRunner1;
-    String line;
+    private List<Competitor> competitorsList;
+    private String line;
 
+    /**
+     * Constructor
+     * 
+     * @param competitors_number number of competitors
+     */
     public Generator(int competitors_number){
         this.competitors_number = competitors_number;
     }
 
+    /** 
+     * Generate random competitors from attached file, which contains many names
+     * 
+     * @param random random value
+     * @return returns list of competitors
+     */
     List <Competitor> generateCompetitors(Random random){
         competitorsList = new ArrayList<Competitor>() ;
 
@@ -44,8 +53,6 @@ public class Generator {
             names.add(scanner1.nextLine());
         }
         scanner1.close();
-
-        //tu mieli byc jumper1,LongDistanceRunner1,sprinter1,line ale wtedy wyrzuca blad inicjalizacji 
         
         for(int i=0;i<competitors_number;i++){
             name = names.get(random.nextInt(names.size()));

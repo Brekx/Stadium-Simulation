@@ -6,10 +6,18 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
+/// class representing utility view 
 public class ViewUtility {
-  private JFrame frame;
-  private Canva canva;
+  private JFrame frame; ///< frame
+  private Canva canva; ///< canva
 
+  /**
+   * Function that makes view
+   * 
+   * @param tracks tracks
+   * @param sandpits sandpits
+   * @param cloakrooms cloakrooms
+   */
   public void makeView(int tracks, int sandpits, int cloakrooms){
     frame = new JFrame("Stadium-Simulation");
     canva = new Canva(tracks, sandpits, cloakrooms);
@@ -26,10 +34,20 @@ public class ViewUtility {
     }).start();
   }
 
+  /**
+   * Frame getter
+   * 
+   * @return returns frame
+   */
   public JFrame getFrame(){
     return frame;
   }
 
+  /**
+   * Canva getter
+   * 
+   * @return returns canva
+   */
   public Canva getCanva(){
     return canva;
   }

@@ -1,5 +1,8 @@
 package Utilities;
 
+/**Enumerates types of competitors */
 public enum CompetitorsTypes {
-  long_distance_runner, sprinter, jumper
+  /**Long distance runner */ long_distance_runner,
+  /**Sprinter */ sprinter,
+  /**Jumper */ jumper
 }

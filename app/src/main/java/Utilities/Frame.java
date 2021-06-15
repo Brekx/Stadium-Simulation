@@ -11,12 +11,21 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
  
+/**Class representing frame */
 public class Frame extends JFrame implements ActionListener {
  
-	JLabel lShowResultsJumpers,lShowResultsSprinters,lShowResultsLDRunners,ltext,lTextJumpers,lTextSprinters,lTextLDRunners;
+	JLabel lShowResultsJumpers, lShowResultsSprinters, lShowResultsLDRunners;
+	JLabel ltext;
+	JLabel lTextJumpers;
+	JLabel lTextSprinters;
+	JLabel lTextLDRunners;
 	FlowControl flowControl;
     
-
+/** 
+ * Constructor creating frame with scores
+ * 
+ * @param scoreboard scoreboard
+ */
  	public Frame(Map <CompetitorsTypes, String> scoreboard) {
 		setSize(700,820);
 		setTitle("Results in competition");
@@ -28,7 +37,7 @@ public class Frame extends JFrame implements ActionListener {
 		ltext.setBounds(150,40,400,20);
 		add(ltext);
 
-		JButton button = new JButton("click");
+		JButton button = new JButton("click to clear");
 		button.setBounds(190,80,300,40);
 		button.setFont(new Font("Cambria",Font.BOLD,15));
 		add(button);
@@ -79,6 +88,11 @@ public class Frame extends JFrame implements ActionListener {
 		
 	}
 
+	/** 
+	 * View containing graphics and scores
+	 *  
+	 * @param flowControl flow control
+	 */
 	public static void view(FlowControl flowControl){
 		Frame frame = new Frame(flowControl.getResults());
 		ImageIcon icon = ResourceManager.getTabela_wynikow();
@@ -92,10 +106,10 @@ public class Frame extends JFrame implements ActionListener {
  	@Override
 	public void actionPerformed(ActionEvent e){
 		lTextJumpers.setText("CATEGORY:  JUMPING: ");
-		lShowResultsJumpers.setText("-> wyniki do sciagniecia od jumpersow <-");//rzutowanie .toString()
+		lShowResultsJumpers.setText(" ");//rzutowanie .toString()
 		lTextSprinters.setText("CATEGORY:  SPRINT: ");
-		lShowResultsSprinters.setText("-> wyniki do sciagniecia od sprinterow <-");
+		lShowResultsSprinters.setText(" ");
 		lTextLDRunners.setText("CATEGORY:  LONG DISTANCE RUN: ");
-		lShowResultsLDRunners.setText("-> wyniki do sciagniecia od skoczkow <-");
+		lShowResultsLDRunners.setText(" ");
 	}
 }

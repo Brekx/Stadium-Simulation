@@ -1,8 +1,15 @@
 # Projekt symulacji stadionu :stadium:
-Symulację wywołuje się konstuując symulację oraz wywołując na niej metodę runSimulation()
+Symulację wywołuje się poprzez automatyczne zbudowanie symulacji poleceniem 
+```
+./gradew run
+```
+ a dokumentacja jest generowana w build/docs/index.html po wydaniu polecenia 
+ ```
+ ./gradlew javadoc
+ ```
 ### TODO
-- [ ] implementacja klas
-- [ ] naprawa hermetyzacji
-- [ ] wyjątki
+- [x] implementacja klas
+- [x] naprawa hermetyzacji
+- [x] wyjątki
 - [ ] testy
 - [ ] aktualizacja diagramów
