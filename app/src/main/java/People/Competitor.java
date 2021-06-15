@@ -6,17 +6,24 @@ import Places.Sector;
 import Places.Stadium;
 import Utilities.CompetitorsTypes;
 
-///class representing competitor
+/**
+ * Class representing competitor
+ */
 public abstract class Competitor {
-    public String name; ///< name
-    public CompetitorsTypes type; ///< type
+    /** Competitor's name */
+    public String name;
+    /** Competitor type */
+    public CompetitorsTypes type;
 
-    protected int strength; ///< strength
-    protected int speed; ///< speed
-    protected int prep; ///< preparation
+    /** Competitor's strenght points 0-100 */
+    protected int strength;
+    /** Competitor's speed points 0-100 */
+    protected int speed;
+    /** Competitor's preparation points 0-100 */
+    protected int prep;
 
-    /// constructor with parameters
     /**
+     * Competitor defined with all values
      * 
      * @param name name
      * @param strength strength
@@ -35,20 +42,20 @@ public abstract class Competitor {
         }
     }
 
-    /// perform 
     /**
+     * Perform an action
      * 
      * @param param1 parameter
-     * @return returns parameter
+     * @return returns performance
      */
     public int perform(int param1){
         return param1;
     }
 
-    /// prepare to competition
-    /** competitor gains preparation points if total score is less than 100
+    /** 
+     * Competitor gains preparation points if total score is less than 100
      * 
-     * @param extra_prep
+     * @param extra_prep granted preparation points
      */
     public void prepare(int extra_prep) {
         if(extra_prep > 0 && extra_prep + prep < 100)
@@ -57,8 +64,7 @@ public abstract class Competitor {
             prep = 100;
     }
 
-    /// move at the stadium
-    /** competitor moves to randomly chosen sector
+    /** Competitor moves to randomly chosen sector
      * 
      * @param stadium stadium
      * @param random random value

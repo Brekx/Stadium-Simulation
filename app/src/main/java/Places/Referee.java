@@ -15,14 +15,16 @@ import People.LongDistanceRunner;
 import People.Sprinter;
 import Utilities.CompetitorsTypes;
 
-/// class representing referee
+/**Class representing referee */
 public class Referee {
 
-    private Sector judgingSector; ///< judging sector
-    private Map <Competitor, List<Integer>> scoreboard; ///<scoreboard
+    /**Sector were referee is judging */
+    private Sector judgingSector;
+    /**Map where referee stores competitors scores */
+    private Map <Competitor, List<Integer>> scoreboard;
 
-    /// constructor with parameters
     /**
+     * Constructor
      * 
      * @param judgingSector judging sector
      * @param random random value
@@ -32,8 +34,8 @@ public class Referee {
         this.judgingSector = judgingSector;
     }
 
-    /// judge
-    /** referee gives points for being in specific sector
+    /** 
+     * Referee gives points for being in specific sector
      * 
      * @param random random value
      * @param minimum_to_perform_competition minimum to perform competition
@@ -59,8 +61,8 @@ public class Referee {
         }
     }
 
-    /// get results
-    /** it returns competitor and their best score
+    /** 
+     * It returns competitor and their best score
      * 
      * @return returns map containing competitor and their best score
      */
@@ -74,11 +76,12 @@ public class Referee {
         return bestScoresInSector;
     }
 
-    ///count competitors
-    /** it counts the number of competitors from specific type
+    /**
+     * It counts the number of competitors from specific type
      * 
      * @param queue queue
      * @param type competitor type
+     * 
      * @return returns sum
      */
     private int countCompetitors(List <Competitor> queue, CompetitorsTypes type){
@@ -89,8 +92,8 @@ public class Referee {
         return sum;
     }
 
-    /// add to scoreboard
-    /** it adds competitor's score to scoreboard
+    /** 
+     * It adds competitor's score to scoreboard
      * 
      * @param competitor competitor
      * @param random random value

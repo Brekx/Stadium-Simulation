@@ -2,11 +2,11 @@ package People;
 
 import Utilities.CompetitorsTypes;
 
-///class representing sprinter
+/**Class representing sprinter */
 public class Sprinter extends Competitor {
 
-    ///constructor with parameters
     /**
+     * Basic Sprinter constructor
      * 
      * @param name name
      * @param strength strength
@@ -23,10 +23,11 @@ public class Sprinter extends Competitor {
         return sprint(param1);
     }
 
-    /// sprint
-    /** this method includes special formula which returns score achieved for sprint based on competitor's attributes
+    /** 
+     * This method includes special formula which returns score achieved for sprint based on competitor's attributes
      * 
      * @param param1 parameter
+     * 
      * @return returns score achieved for sprint
      */
     public int sprint(int param1){

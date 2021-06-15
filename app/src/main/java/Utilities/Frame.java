@@ -11,20 +11,18 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
  
-/// class representing frame
+/**Class representing frame */
 public class Frame extends JFrame implements ActionListener {
  
-	JLabel lShowResultsJumpers; ///< label show jumper's results 
-	JLabel lShowResultsSprinters; ///< label show sprinter's results 
-	JLabel lShowResultsLDRunners; ///< label show long distance runner's results 
-	JLabel ltext; ///< label text
-	JLabel lTextJumpers; ///< label jumper text 
-	JLabel lTextSprinters; ///< label sprinter text 
-	JLabel lTextLDRunners; ///< label long distance runner text 
-	FlowControl flowControl; ///< flow control
+	JLabel lShowResultsJumpers, lShowResultsSprinters, lShowResultsLDRunners;
+	JLabel ltext;
+	JLabel lTextJumpers;
+	JLabel lTextSprinters;
+	JLabel lTextLDRunners;
+	FlowControl flowControl;
     
-/// constructor representing frame
-/** constructor creating frame with scores
+/** 
+ * Constructor creating frame with scores
  * 
  * @param scoreboard scoreboard
  */
@@ -90,8 +88,8 @@ public class Frame extends JFrame implements ActionListener {
 		
 	}
 
-	/// view 
-	/** view containing graphics and scores
+	/** 
+	 * View containing graphics and scores
 	 *  
 	 * @param flowControl flow control
 	 */

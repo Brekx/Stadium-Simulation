@@ -4,9 +4,13 @@ import java.util.Random;
 
 import Utilities.SectorTypes;
 
-///class representing snadpit
+/**Class representing snadpit */
 public class Sandpit extends Sector {
-    ///constructor with random parameter
+    /**
+     * Constructor 
+     * 
+     * @param random random which which perform points will be granted
+    */
     Sandpit(Random random){
         super(random);
         type = SectorTypes.sandpit;

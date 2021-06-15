@@ -4,9 +4,13 @@ import java.util.Random;
 
 import Utilities.SectorTypes;
 
-///class representing track
+/**Class representing track */
 public class Track extends Sector {
-    ///constructor with random parameter
+    /**
+     * Constructor with random parameter
+     * 
+     * @param random random with which perform points will be granted
+     */
     Track(Random random){
         super(random);
         type =  SectorTypes.track;

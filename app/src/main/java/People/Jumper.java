@@ -2,11 +2,11 @@ package People;
 
 import Utilities.CompetitorsTypes;
 
-///class representing jumper
+/**Class representing jumper */
 public class Jumper extends Competitor {
 
-    ///constructor with parameters
     /**
+     * Basic Jumper constructor
      * 
      * @param name name
      * @param strength strength
@@ -23,8 +23,8 @@ public class Jumper extends Competitor {
         return jump(param1);
     }
 
-    /// jump
-    /** this method includes special formula which returns score achieved for jump based on competitor's attributes
+    /** 
+     * This method includes special formula which returns score achieved for jump based on competitor's attributes
      * 
      * @param param1 parameter
      * @return returns score achieved for jump

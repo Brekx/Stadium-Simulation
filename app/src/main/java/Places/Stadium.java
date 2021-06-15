@@ -14,16 +14,21 @@ import People.Competitor;
 import Utilities.CompetitorsTypes;
 import Utilities.FlowControl;
 
-/// class representing stadium
+/**Class representing stadium */
 public class Stadium {
-    private List <Sector> sectorList; ///< list of sectors
-    private int last_index_track; ///< last index track
-    private int last_index_sandpit; ///< last index sandpit
-    private int last_index_cloakroom; ///< last index cloakroom
-    private FlowControl flowControl; ///< flow control
+    /**List od sectors */
+    private List <Sector> sectorList;
+    /**Last index track */
+    private int last_index_track;
+    /**Last index sandpit */
+    private int last_index_sandpit;
+    /**Last index cloakroom */
+    private int last_index_cloakroom;
+    /**Flow control */
+    private FlowControl flowControl;
 
-    /// constructor with parameters
-    /** constructor which creates sectors and makes competitors join queues 
+    /** 
+     * Constructor which creates sectors and makes competitors join queues 
      * 
      * @param tracks number of tracks
      * @param sandpits number of sandpits
@@ -54,8 +59,8 @@ public class Stadium {
         }
     }
 
-    /// perform competition
-    /** every competitor performs and gets result
+    /** 
+     * Every competitor performs and gets result
      * 
      * @param random random value
      * @param minimum_to_perform_competition minimal amount of competitors
@@ -67,8 +72,8 @@ public class Stadium {
         flowControl.perform_competition();
     }
 
-    /// perform movement
     /** 
+     * Tells competetitors to move
      * 
      * @param random random value
      */

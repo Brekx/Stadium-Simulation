@@ -13,15 +13,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-/// class representing canva
+/**Class representing canva */
 public class Canva extends JPanel {
   List <SectorView> sectorViews;
   Dimension ludzik_position;
   boolean animacja = false;
   int current_frame = 0;
 
-  /// constructor with parameters
   /**
+   * Constructor
    * 
    * @param tracks number of tracks
    * @param sandpits number of sandpits
@@ -45,8 +45,8 @@ public class Canva extends JPanel {
     }
   }
 
-  /// move between
-  /** move from A to B
+  /** 
+   * Move from A to B
    * 
    * @param index_from index A
    * @param index_to index B
@@ -56,8 +56,8 @@ public class Canva extends JPanel {
       move(sectorViews.get(index_from).getPosition(), sectorViews.get(index_to).getPosition());
   }
 
-  /// move from one place to another
-  /** moving from start to end dimension
+  /** 
+   * Moving from start to end dimension
    * 
    * @param start start
    * @param end end
@@ -82,20 +82,21 @@ public class Canva extends JPanel {
       continue;
   }
 
-  /// move path 
   /** 
+   * Determins path which icon follows
    * 
    * @param frame frame
    * @param start start
    * @param end end
+   * 
    * @return returns new dimension
    */
   private static Dimension move_path(int frame, Dimension start, Dimension end){
       return new Dimension((int) (start.getWidth()+frame*(end.getWidth()-start.getWidth())/100), (int) (start.getHeight()+frame*(end.getHeight()-start.getHeight())/100));
   }
 
-  /// generate sectors
-  /** generate sectors view
+  /** 
+   * Generate sectors view
    * 
    * @param tracks tracks
    * @param cloakrooms cloakrooms

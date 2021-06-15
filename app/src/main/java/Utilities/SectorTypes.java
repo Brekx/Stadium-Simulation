@@ -1,3 +1,7 @@
 package Utilities;
 
-public enum SectorTypes {cloakroom, sandpit, track}
+/**Enumerates types of sectors */
+public enum SectorTypes {
+  /**Cloakroom */ cloakroom,
+  /**Sandpit */ sandpit, 
+  /**Track */ track}

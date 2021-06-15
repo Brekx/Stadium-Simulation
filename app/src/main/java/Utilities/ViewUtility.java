@@ -11,8 +11,8 @@ public class ViewUtility {
   private JFrame frame; ///< frame
   private Canva canva; ///< canva
 
-  /// make view
   /**
+   * Function that makes view
    * 
    * @param tracks tracks
    * @param sandpits sandpits
@@ -34,8 +34,8 @@ public class ViewUtility {
     }).start();
   }
 
-  /// get frame 
   /**
+   * Frame getter
    * 
    * @return returns frame
    */
@@ -43,8 +43,8 @@ public class ViewUtility {
     return frame;
   }
 
-  /// get canva 
   /**
+   * Canva getter
    * 
    * @return returns canva
    */

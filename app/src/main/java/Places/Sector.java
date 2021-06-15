@@ -7,14 +7,17 @@ import java.util.Random;
 import People.Competitor;
 import Utilities.SectorTypes;
 
-/// class representing sector
+/**Class representing sector */
 public abstract class Sector {
-    private List<Competitor> queue; ///< queue
-    protected Referee referee; ///< referee
-    public SectorTypes type; ///< type
+    /**List of competitors being in queue */
+    private List<Competitor> queue;
+    /**Referee which is judging here */
+    protected Referee referee;
+    /**Type of sector */
+    public SectorTypes type;
 
-    /// constructor with random parameter
-    /** constructor which creates queue and referee
+    /** 
+     * Constructor which creates queue and referee
      * 
      * @param random random value
      */
@@ -23,8 +26,8 @@ public abstract class Sector {
         referee = new Referee(this, random);
     }
 
-    /// join queue 
-    /** competitor joins queue - is added to it
+    /** 
+     * Competitor joins queue - is added to it
      * 
      * @param competitor competitor
      */
@@ -32,10 +35,10 @@ public abstract class Sector {
         queue.add(competitor);
     }
 
-    /// leave queue
-    /** competitor leaves queue - is removed from it
+    /** 
+     * Competitor leaves queue - is removed from it
      * 
-     * @param competitor
+     * @param competitor competitor that wants to leave queue
      */
     public void leaveQueue(Competitor competitor){
         try{
@@ -45,8 +48,8 @@ public abstract class Sector {
         }
     }
 
-    /// get queue
     /**
+     * Getter of queue
      * 
      * @return returns list of competitors
      */

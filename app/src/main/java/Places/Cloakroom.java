@@ -4,11 +4,15 @@ import java.util.Random;
 
 import Utilities.SectorTypes;
 
-///class representing cloakroom
+/**Class representing cloakroom */
 public class Cloakroom extends Sector {
-    ///constructor with random parameter
+    /**
+     * Constructor 
+     * 
+     * @param random random with which preparation points will be granted
+    */
     Cloakroom(Random random){
         super(random);
-        type  = SectorTypes.cloakroom;
+        type = SectorTypes.cloakroom;
     }
 }

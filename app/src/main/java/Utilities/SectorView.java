@@ -9,7 +9,7 @@ import java.awt.Dimension;
 import javax.swing.ImageIcon; 
 import javax.swing.Timer;
 
-/// class representing sector view
+/**Class representing sector view */
 public class SectorView {
   private ImageIcon ludzik = new ImageIcon(new ImageIcon("app/src/main/resources/ludzik.png").getImage().getScaledInstance(30, 70, Image.SCALE_SMOOTH)); ///< person
   private ImageIcon image; ///< image
@@ -21,8 +21,8 @@ public class SectorView {
   boolean animation = false; ///< animation
   Dimension ludzik_position = new Dimension(); ///< person's position
 
-  /// constructor with parameters
   /**
+   * Constructor
    * 
    * @param type type
    * @param x variable x
@@ -46,8 +46,8 @@ public class SectorView {
     }
   }
 
-  /// draw people
-  /** drawing people on the board
+  /** 
+   * Drawing people on the board
    * 
    * @param g graphics
    * @param x varable x
@@ -61,10 +61,10 @@ public class SectorView {
       g.drawImage(ludzik.getImage(), x+(i*dx/count), y+(i*dy/count), null);
   }
 
-  /// draw sector
-  /** drawing sector on board
+  /** 
+   * Drawing sector on board
    * 
-   * @param g graphics
+   * @param g graphics to draw
    */
   public void drawSector(Graphics g) {
     g.drawImage(image.getImage(), (int) x-image.getIconWidth()/2, (int) y-image.getIconHeight()/2, null);
@@ -74,8 +74,8 @@ public class SectorView {
     }
   }
 
-  /// get position
   /**
+   * Getter of position
    * 
    * @return returns new dimension
    */
@@ -83,8 +83,8 @@ public class SectorView {
     return new Dimension(x, y);
   }
 
-  /// animate 
-  /** letting people competite and animate it 
+  /** 
+   * Letting people competite and animate it 
    * 
    */
   public void animate(){
@@ -118,8 +118,8 @@ public class SectorView {
     }
   }
 
-  /// cloakroom path
   /** 
+   * Cloakroom animation path
    * 
    * @param frame frame
    * @return returns new dimension
@@ -132,8 +132,8 @@ public class SectorView {
     return new Dimension(x+35-3*(frame-66), y-20-(frame-66));
   }
 
-  /// sandpit path
   /** 
+   * Sandpit animation path
    * 
    * @param frame frame
    * @return returns new dimension
@@ -146,8 +146,8 @@ public class SectorView {
     return new Dimension(x+(frame-66)/2, y-50+(frame-66)/2);
   }
 
-  /// track path
   /** 
+   * Track animation path
    * 
    * @param frame frame
    * @return returns new dimension

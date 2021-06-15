@@ -2,11 +2,11 @@ package People;
 
 import Utilities.CompetitorsTypes;
 
-///class representing long distance runner
+/**Class representing long distance runner */
 public class LongDistanceRunner extends Competitor {
 
-/// constructor with parameters
 /**
+ * Basic LongDistanceRunner constructor
  * 
  * @param name name
  * @param strength strength
@@ -23,10 +23,11 @@ public LongDistanceRunner(String name, int strength, int speed, int prep){
         return run(param1);
     }
 
-    /// run
-    /** this method includes special formula which returns score achieved for run based on competitor's attributes
+    /** 
+     * This method includes special formula which returns score achieved for run based on competitor's attributes
      * 
      * @param param1 parameter
+     * 
      * @return returns score achieved for run
      */
     public int run(int param1){
