@@ -34,13 +34,13 @@ public class Canva extends JPanel {
   @Override
   protected void paintComponent(Graphics g) {
     super.paintComponent(g);
-    ImageIcon stadion = new ImageIcon(new ImageIcon("app/src/main/resources/stadion.png").getImage().getScaledInstance(800, 600, Image.SCALE_SMOOTH));
+    ImageIcon stadion = new ImageIcon(ResourceManager.getStadion().getImage().getScaledInstance(800, 600, Image.SCALE_SMOOTH));
     g.drawImage(stadion.getImage(), 0, 0, null);
     for(SectorView sectorView : sectorViews){
       sectorView.drawSector(g);
     }
     if(animacja){
-      ImageIcon ludzik = new ImageIcon(new ImageIcon("app/src/main/resources/ludzik.png").getImage().getScaledInstance(30, 70, Image.SCALE_SMOOTH));
+      ImageIcon ludzik = new ImageIcon(ResourceManager.getLudzik().getImage().getScaledInstance(30, 70, Image.SCALE_SMOOTH));
       g.drawImage(ludzik.getImage(), ludzik_position.width, ludzik_position.height, null);
     }
   }
@@ -70,7 +70,7 @@ public class Canva extends JPanel {
       public void actionPerformed(ActionEvent e) {
         ludzik_position = move_path(current_frame, start, end);
         current_frame++;
-        if(current_frame > 1){
+        if(current_frame > 10){
           current_frame = 0;
           animacja = false;
           ((Timer)e.getSource()).stop();
@@ -92,7 +92,7 @@ public class Canva extends JPanel {
    * @return returns new dimension
    */
   private static Dimension move_path(int frame, Dimension start, Dimension end){
-      return new Dimension((int) (start.getWidth()+frame*(end.getWidth()-start.getWidth())/100), (int) (start.getHeight()+frame*(end.getHeight()-start.getHeight())/100));
+      return new Dimension((int) (start.getWidth()+frame*(end.getWidth()-start.getWidth())/10), (int) (start.getHeight()+frame*(end.getHeight()-start.getHeight())/10));
   }
 
   /** 
