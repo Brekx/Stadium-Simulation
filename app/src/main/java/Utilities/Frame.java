@@ -11,12 +11,23 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
  
+/// class representing frame
 public class Frame extends JFrame implements ActionListener {
  
-	JLabel lShowResultsJumpers,lShowResultsSprinters,lShowResultsLDRunners,ltext,lTextJumpers,lTextSprinters,lTextLDRunners;
-	FlowControl flowControl;
+	JLabel lShowResultsJumpers; ///< label show jumper's results 
+	JLabel lShowResultsSprinters; ///< label show sprinter's results 
+	JLabel lShowResultsLDRunners; ///< label show long distance runner's results 
+	JLabel ltext; ///< label text
+	JLabel lTextJumpers; ///< label jumper text 
+	JLabel lTextSprinters; ///< label sprinter text 
+	JLabel lTextLDRunners; ///< label long distance runner text 
+	FlowControl flowControl; ///< flow control
     
-
+/// constructor representing frame
+/** constructor creating frame with scores
+ * 
+ * @param scoreboard scoreboard
+ */
  	public Frame(Map <CompetitorsTypes, String> scoreboard) {
 		setSize(700,820);
 		setTitle("Results in competition");
@@ -28,7 +39,7 @@ public class Frame extends JFrame implements ActionListener {
 		ltext.setBounds(150,40,400,20);
 		add(ltext);
 
-		JButton button = new JButton("click");
+		JButton button = new JButton("click to clear");
 		button.setBounds(190,80,300,40);
 		button.setFont(new Font("Cambria",Font.BOLD,15));
 		add(button);
@@ -79,6 +90,11 @@ public class Frame extends JFrame implements ActionListener {
 		
 	}
 
+	/// view 
+	/** view containing graphics and scores
+	 *  
+	 * @param flowControl flow control
+	 */
 	public static void view(FlowControl flowControl){
 		Frame frame = new Frame(flowControl.getResults());
 		ImageIcon icon = new ImageIcon("app/src/main/resources/tabela_wynikow.jpg");
@@ -92,10 +108,10 @@ public class Frame extends JFrame implements ActionListener {
  	@Override
 	public void actionPerformed(ActionEvent e){
 		lTextJumpers.setText("CATEGORY:  JUMPING: ");
-		lShowResultsJumpers.setText("-> wyniki do sciagniecia od jumpersow <-");//rzutowanie .toString()
+		lShowResultsJumpers.setText(" ");//rzutowanie .toString()
 		lTextSprinters.setText("CATEGORY:  SPRINT: ");
-		lShowResultsSprinters.setText("-> wyniki do sciagniecia od sprinterow <-");
+		lShowResultsSprinters.setText(" ");
 		lTextLDRunners.setText("CATEGORY:  LONG DISTANCE RUN: ");
-		lShowResultsLDRunners.setText("-> wyniki do sciagniecia od skoczkow <-");
+		lShowResultsLDRunners.setText(" ");
 	}
 }

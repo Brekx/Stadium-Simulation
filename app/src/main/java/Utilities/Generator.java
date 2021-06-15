@@ -11,18 +11,30 @@ import People.Jumper;
 import People.LongDistanceRunner;
 import People.Sprinter;
 
+/// class representing generator
 public class Generator {
-    private int competitors_number;
-    List<Competitor> competitorsList;
-    Jumper jumper1;
-    Sprinter sprinter1; 
-    LongDistanceRunner longDistanceRunner1;
-    String line;
+    private int competitors_number; ///< number of competitors
+    List<Competitor> competitorsList; ///< list of competitors
+    Jumper jumper1; ///< jumper instance
+    Sprinter sprinter1; ///< sprinter instance
+    LongDistanceRunner longDistanceRunner1; ///< long distance runner instance
+    String line; ///< line 
 
+    /// constructor with parameters
+    /**
+     * 
+     * @param competitors_number number of competitors
+     */
     public Generator(int competitors_number){
         this.competitors_number = competitors_number;
     }
 
+    /// generate competitors
+    /** generate random competitors from attached file, which contains many names
+     * 
+     * @param random random value
+     * @return returns list of competitors
+     */
     List <Competitor> generateCompetitors(Random random){
         competitorsList = new ArrayList<Competitor>() ;
 

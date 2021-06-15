@@ -9,14 +9,25 @@ import java.awt.Dimension;
 import javax.swing.ImageIcon; 
 import javax.swing.Timer;
 
+/// class representing sector view
 public class SectorView {
-  private ImageIcon ludzik = new ImageIcon(new ImageIcon("app/src/main/resources/ludzik.png").getImage().getScaledInstance(30, 70, Image.SCALE_SMOOTH));
-  private ImageIcon image;
-  int current_people = 0, x, y, current_frame=0;
-  SectorTypes type;
-  boolean animation = false;
-  Dimension ludzik_position = new Dimension();
+  private ImageIcon ludzik = new ImageIcon(new ImageIcon("app/src/main/resources/ludzik.png").getImage().getScaledInstance(30, 70, Image.SCALE_SMOOTH)); ///< person
+  private ImageIcon image; ///< image
+  int current_people = 0; ///< current person
+  int x; ///< variable x
+  int y; ///< variable y
+  int current_frame=0; ///< current frame
+  SectorTypes type; ///< type
+  boolean animation = false; ///< animation
+  Dimension ludzik_position = new Dimension(); ///< person's position
 
+  /// constructor with parameters
+  /**
+   * 
+   * @param type type
+   * @param x variable x
+   * @param y variable y
+   */
   SectorView(SectorTypes type, int x, int y){
     this.x = x;
     this.y = y;
@@ -35,11 +46,26 @@ public class SectorView {
     }
   }
 
+  /// draw people
+  /** drawing people on the board
+   * 
+   * @param g graphics
+   * @param x varable x
+   * @param y variable y
+   * @param dx delta x
+   * @param dy delta y
+   * @param count count
+   */
   private void drawPeople(Graphics g, int x, int y, int dx, int dy, int count){
     for(int i=0; i<count; i++)
       g.drawImage(ludzik.getImage(), x+(i*dx/count), y+(i*dy/count), null);
   }
 
+  /// draw sector
+  /** drawing sector on board
+   * 
+   * @param g graphics
+   */
   public void drawSector(Graphics g) {
     g.drawImage(image.getImage(), (int) x-image.getIconWidth()/2, (int) y-image.getIconHeight()/2, null);
     drawPeople(g, x-100, y, 50, 0, current_people);
@@ -48,10 +74,19 @@ public class SectorView {
     }
   }
 
+  /// get position
+  /**
+   * 
+   * @return returns new dimension
+   */
   public Dimension getPosition(){
     return new Dimension(x, y);
   }
 
+  /// animate 
+  /** letting people competite and animate it 
+   * 
+   */
   public void animate(){
     if(current_people>0){
       animation  = true;
@@ -83,6 +118,12 @@ public class SectorView {
     }
   }
 
+  /// cloakroom path
+  /** 
+   * 
+   * @param frame frame
+   * @return returns new dimension
+   */
   private Dimension cloakroom_path(int frame){
     if(frame<33)
       return new Dimension(x-65+3*frame, y-20-frame);
@@ -91,6 +132,12 @@ public class SectorView {
     return new Dimension(x+35-3*(frame-66), y-20-(frame-66));
   }
 
+  /// sandpit path
+  /** 
+   * 
+   * @param frame frame
+   * @return returns new dimension
+   */
   private Dimension sandpit_path(int frame){
     if(frame<33)
       return new Dimension(x-81+2*frame, y-68+frame);
@@ -99,6 +146,12 @@ public class SectorView {
     return new Dimension(x+(frame-66)/2, y-50+(frame-66)/2);
   }
 
+  /// track path
+  /** 
+   * 
+   * @param frame frame
+   * @return returns new dimension
+   */
   private Dimension track_path(int frame){
     return new Dimension(x-100+frame, y-100+frame);
   }
