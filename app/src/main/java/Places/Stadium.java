@@ -14,12 +14,24 @@ import People.Competitor;
 import Utilities.CompetitorsTypes;
 import Utilities.FlowControl;
 
+/// class representing stadium
 public class Stadium {
-    private List <Sector> sectorList;
-    private int last_index_track, last_index_sandpit, last_index_cloakroom;
-    private FlowControl flowControl;
+    private List <Sector> sectorList; ///< list of sectors
+    private int last_index_track; ///< last index track
+    private int last_index_sandpit; ///< last index sandpit
+    private int last_index_cloakroom; ///< last index cloakroom
+    private FlowControl flowControl; ///< flow control
 
-
+    /// constructor with parameters
+    /** constructor which creates sectors and makes competitors join queues 
+     * 
+     * @param tracks number of tracks
+     * @param sandpits number of sandpits
+     * @param cloakrooms number of cloakrooms
+     * @param random random value
+     * @param competitors list of competitors
+     * @param flowControl flow control
+     */
     public Stadium(int tracks, int sandpits, int cloakrooms, Random random, List <Competitor> competitors, FlowControl flowControl){
         this.flowControl = flowControl;
         sectorList = new ArrayList<Sector>();
@@ -42,6 +54,12 @@ public class Stadium {
         }
     }
 
+    /// perform competition
+    /** every competitor performs and gets result
+     * 
+     * @param random random value
+     * @param minimum_to_perform_competition minimal amount of competitors
+     */
     public void performCompetition(Random random, int minimum_to_perform_competition){
         for(Sector sector: sectorList){
             sector.referee.judge(random, minimum_to_perform_competition);
@@ -49,6 +67,11 @@ public class Stadium {
         flowControl.perform_competition();
     }
 
+    /// perform movement
+    /** 
+     * 
+     * @param random random value
+     */
     public void performMovement(Random random){
         List <Competitor> already_moved = new ArrayList<Competitor>();
         for(Sector sector: sectorList){
@@ -62,6 +85,11 @@ public class Stadium {
         }
     }
 
+    /// get track
+    /**
+     * 
+     * @return returns track
+     */
     public Track getTrack(){
         for(int i=last_index_track; i<sectorList.size()+last_index_track; i++){
             if(sectorList.get(i%sectorList.size()).getClass()==Track.class){
@@ -72,6 +100,11 @@ public class Stadium {
         throw new NoSuchFieldError("No Tracks");
     }
 
+    /// get sandpit
+    /**
+     * 
+     * @return returns sandpit
+     */
     public Sandpit getSandpit(){
         for(int i=last_index_sandpit; i<sectorList.size()+last_index_sandpit; i++){
             if(sectorList.get(i%sectorList.size()).getClass()==Sandpit.class){
@@ -82,6 +115,11 @@ public class Stadium {
         throw new NoSuchFieldError("No Sandpits");
     }
 
+    /// get cloakroom
+    /**
+     * 
+     * @return returns cloakroom
+     */
     public Cloakroom getCloakroom(){
         for(int i=last_index_cloakroom; i<sectorList.size()+last_index_cloakroom; i++){
             if(sectorList.get(i%sectorList.size()).getClass()==Cloakroom.class){
@@ -92,6 +130,11 @@ public class Stadium {
         throw new NoSuchFieldError("No Cloakrooms");
     }
 
+    /// get results
+    /** it unifies specific competitors scores
+     * 
+     * @return returns unified scoreboards
+     */
     public Map <CompetitorsTypes, String> getResults(){
         Map <CompetitorsTypes, Map<Competitor, Integer>> scoreboard_unified = new HashMap<CompetitorsTypes, Map<Competitor, Integer>>();
         Map <CompetitorsTypes, String> results = new HashMap<CompetitorsTypes, String>();

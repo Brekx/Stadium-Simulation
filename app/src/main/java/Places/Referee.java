@@ -15,16 +15,29 @@ import People.LongDistanceRunner;
 import People.Sprinter;
 import Utilities.CompetitorsTypes;
 
+/// class representing referee
 public class Referee {
 
-    private Sector judgingSector;
-    private Map <Competitor, List<Integer>> scoreboard;
+    private Sector judgingSector; ///< judging sector
+    private Map <Competitor, List<Integer>> scoreboard; ///<scoreboard
 
+    /// constructor with parameters
+    /**
+     * 
+     * @param judgingSector judging sector
+     * @param random random value
+     */
     Referee(Sector judgingSector, Random random){
         scoreboard = new HashMap<Competitor, List<Integer>>();
         this.judgingSector = judgingSector;
     }
 
+    /// judge
+    /** referee gives points for being in specific sector
+     * 
+     * @param random random value
+     * @param minimum_to_perform_competition minimum to perform competition
+     */
     public void judge(Random random, int minimum_to_perform_competition){
         List <Competitor> queue = judgingSector.getQueue();
         for(Competitor competitor: queue){
@@ -46,6 +59,11 @@ public class Referee {
         }
     }
 
+    /// get results
+    /** it returns competitor and their best score
+     * 
+     * @return returns map containing competitor and their best score
+     */
     public Map<Competitor, Integer> getResults(){ 
         Map <Competitor, Integer> bestScoresInSector = new HashMap<Competitor, Integer>();
         
@@ -56,6 +74,13 @@ public class Referee {
         return bestScoresInSector;
     }
 
+    ///count competitors
+    /** it counts the number of competitors from specific type
+     * 
+     * @param queue queue
+     * @param type competitor type
+     * @return returns sum
+     */
     private int countCompetitors(List <Competitor> queue, CompetitorsTypes type){
         int sum = 0;
         for(Competitor competitor:queue)
@@ -64,6 +89,13 @@ public class Referee {
         return sum;
     }
 
+    /// add to scoreboard
+    /** it adds competitor's score to scoreboard
+     * 
+     * @param competitor competitor
+     * @param random random value
+     * @param score score
+     */
     private void addToScoreboard(Competitor competitor, Random random, int score){
         if(scoreboard.containsKey(competitor)){
             scoreboard.get(competitor).add(score);
