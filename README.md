@@ -1,11 +1,11 @@
 # Projekt symulacji stadionu :stadium:
 Symulację wywołuje się poprzez automatyczne zbudowanie symulacji poleceniem 
 ```
-"./gradew run"
+./gradew run
 ```
  a dokumentacja jest generowana w build/docs/index.html po wydaniu polecenia 
  ```
- "./gradlew javadoc"
+ ./gradlew javadoc
  ```
 ### TODO
 - [x] implementacja klas
