@@ -28,3 +28,9 @@ application {
     // Define the main class for the application.
     mainClass = 'Utilities.Simulation'
 }
+
+jar {
+    manifest {
+        attributes "Main-Class":"Utilities.Simulation"
+    }
+}
