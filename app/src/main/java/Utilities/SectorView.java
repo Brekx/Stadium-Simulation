@@ -21,7 +21,6 @@ public class SectorView {
     this.x = x;
     this.y = y;
     this.type = type;
-    // 200x150
     switch(type){
       case track:
         image = new ImageIcon(ResourceManager.getTrack().getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH));
@@ -70,7 +69,7 @@ public class SectorView {
               break;
           }
           current_frame++;
-          if(current_frame>1){
+          if(current_frame>100){
             current_frame = 0;
             animation = false;
             ((Timer)e.getSource()).stop();

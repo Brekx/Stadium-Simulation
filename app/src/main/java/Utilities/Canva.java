@@ -50,7 +50,7 @@ public class Canva extends JPanel {
       public void actionPerformed(ActionEvent e) {
         ludzik_position = move_path(current_frame, start, end);
         current_frame++;
-        if(current_frame > 1){
+        if(current_frame > 10){
           current_frame = 0;
           animacja = false;
           ((Timer)e.getSource()).stop();
@@ -63,7 +63,7 @@ public class Canva extends JPanel {
   }
 
   private static Dimension move_path(int frame, Dimension start, Dimension end){
-      return new Dimension((int) (start.getWidth()+frame*(end.getWidth()-start.getWidth())/100), (int) (start.getHeight()+frame*(end.getHeight()-start.getHeight())/100));
+      return new Dimension((int) (start.getWidth()+frame*(end.getWidth()-start.getWidth())/10), (int) (start.getHeight()+frame*(end.getHeight()-start.getHeight())/10));
   }
 
   private void generarateSectors(int tracks, int cloakrooms, int sandpits){
