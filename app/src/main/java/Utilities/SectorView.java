@@ -11,7 +11,7 @@ import javax.swing.Timer;
 
 /**Class representing sector view */
 public class SectorView {
-  private ImageIcon ludzik = new ImageIcon(new ImageIcon("app/src/main/resources/ludzik.png").getImage().getScaledInstance(30, 70, Image.SCALE_SMOOTH)); ///< person
+  private ImageIcon ludzik = new ImageIcon(ResourceManager.getLudzik().getImage().getScaledInstance(30, 70, Image.SCALE_SMOOTH)); ///< person
   private ImageIcon image; ///< image
   int current_people = 0; ///< current person
   int x; ///< variable x
