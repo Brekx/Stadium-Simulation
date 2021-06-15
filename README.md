@@ -11,5 +11,5 @@ Symulację wywołuje się poprzez automatyczne zbudowanie symulacji poleceniem
 - [x] implementacja klas
 - [x] naprawa hermetyzacji
 - [x] wyjątki
-- [ ] testy
-- [ ] aktualizacja diagramów
+- [x] testy
+- [x] aktualizacja diagramów
