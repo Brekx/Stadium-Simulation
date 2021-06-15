@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
 public class SectorView {
-  private ImageIcon ludzik = new ImageIcon(new ImageIcon("app/src/main/resources/ludzik.png").getImage().getScaledInstance(30, 70, Image.SCALE_SMOOTH));
+  private ImageIcon ludzik = new ImageIcon(ResourceManager.getLudzik().getImage().getScaledInstance(30, 70, Image.SCALE_SMOOTH));
   private ImageIcon image;
   int current_people = 0, x, y, current_frame=0;
   SectorTypes type;
@@ -24,13 +24,13 @@ public class SectorView {
     // 200x150
     switch(type){
       case track:
-        image = new ImageIcon(new ImageIcon("app/src/main/resources/track.png").getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH));
+        image = new ImageIcon(ResourceManager.getTrack().getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH));
         break;
       case cloakroom:
-        image = new ImageIcon(new ImageIcon("app/src/main/resources/cloakroom.png").getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH));
+        image = new ImageIcon(ResourceManager.getCloakroom().getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH));
         break;
       case sandpit:
-        image = new ImageIcon(new ImageIcon("app/src/main/resources/sandpit.png").getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH));
+        image = new ImageIcon(ResourceManager.getSandpit().getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH));
         break;
     }
   }

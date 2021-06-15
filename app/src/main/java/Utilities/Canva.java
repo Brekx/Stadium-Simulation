@@ -26,13 +26,13 @@ public class Canva extends JPanel {
   @Override
   protected void paintComponent(Graphics g) {
     super.paintComponent(g);
-    ImageIcon stadion = new ImageIcon(new ImageIcon("app/src/main/resources/stadion.png").getImage().getScaledInstance(800, 600, Image.SCALE_SMOOTH));
+    ImageIcon stadion = new ImageIcon(ResourceManager.getStadion().getImage().getScaledInstance(800, 600, Image.SCALE_SMOOTH));
     g.drawImage(stadion.getImage(), 0, 0, null);
     for(SectorView sectorView : sectorViews){
       sectorView.drawSector(g);
     }
     if(animacja){
-      ImageIcon ludzik = new ImageIcon(new ImageIcon("app/src/main/resources/ludzik.png").getImage().getScaledInstance(30, 70, Image.SCALE_SMOOTH));
+      ImageIcon ludzik = new ImageIcon(ResourceManager.getLudzik().getImage().getScaledInstance(30, 70, Image.SCALE_SMOOTH));
       g.drawImage(ludzik.getImage(), ludzik_position.width, ludzik_position.height, null);
     }
   }

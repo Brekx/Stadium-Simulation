@@ -81,7 +81,7 @@ public class Frame extends JFrame implements ActionListener {
 
 	public static void view(FlowControl flowControl){
 		Frame frame = new Frame(flowControl.getResults());
-		ImageIcon icon = new ImageIcon("app/src/main/resources/tabela_wynikow.jpg");
+		ImageIcon icon = ResourceManager.getTabela_wynikow();
 		JLabel label = new JLabel(icon);
 		label.setBounds(0,0,700,800);
 		frame.add(label);

@@ -3,7 +3,6 @@ package Utilities;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.io.File;
 import java.util.Scanner;
 
 import People.Competitor;
@@ -26,7 +25,6 @@ public class Generator {
     List <Competitor> generateCompetitors(Random random){
         competitorsList = new ArrayList<Competitor>() ;
 
-        File file = new File("app/src/main/resources/names.txt");
         Scanner scanner1;
 
         String name;
@@ -35,10 +33,10 @@ public class Generator {
         Competitor competitor;
 
         try{
-             scanner1 = new Scanner(file);
+             scanner1 = new Scanner(ResourceManager.getNames());
         }
-        catch(Exception exception){
-            return null;
+        catch(Exception e){
+            throw new Error(e.toString());
         }
 
         List <String> names = new ArrayList<>();
